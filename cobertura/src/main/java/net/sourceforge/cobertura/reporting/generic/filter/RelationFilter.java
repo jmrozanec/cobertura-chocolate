@@ -1,10 +1,9 @@
 package net.sourceforge.cobertura.reporting.generic.filter;
 
-import net.sourceforge.cobertura.reporting.generic.Node;
+import net.sourceforge.cobertura.reporting.generic.node.Node;
 import net.sourceforge.cobertura.reporting.generic.filter.criteria.Criteria;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 /*

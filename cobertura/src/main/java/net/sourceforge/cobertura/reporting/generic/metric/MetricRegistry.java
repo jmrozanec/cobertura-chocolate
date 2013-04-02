@@ -1,7 +1,10 @@
-package net.sourceforge.cobertura.reporting.generic;
+package net.sourceforge.cobertura.reporting.generic.metric;
 
+import net.sourceforge.cobertura.reporting.generic.InsufficientInfoException;
+import net.sourceforge.cobertura.reporting.generic.metric.ICustomMetric;
+import net.sourceforge.cobertura.reporting.generic.metric.IMetric;
+import net.sourceforge.cobertura.reporting.generic.metric.MetricWrapper;
 import org.simpleframework.xml.ElementList;
-import sun.misc.BASE64Encoder;
 
 import java.util.HashMap;
 import java.util.HashSet;

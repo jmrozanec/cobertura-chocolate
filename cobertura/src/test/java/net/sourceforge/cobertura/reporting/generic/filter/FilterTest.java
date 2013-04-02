@@ -2,6 +2,8 @@ package net.sourceforge.cobertura.reporting.generic.filter;
 
 import net.sourceforge.cobertura.reporting.generic.*;
 import net.sourceforge.cobertura.reporting.generic.filter.criteria.EqCriteria;
+import net.sourceforge.cobertura.reporting.generic.node.Node;
+import net.sourceforge.cobertura.reporting.generic.node.NodeType;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,5 +1,8 @@
 package net.sourceforge.cobertura.reporting.generic;
 
+import net.sourceforge.cobertura.reporting.generic.data.CoverageData;
+import net.sourceforge.cobertura.reporting.generic.node.Node;
+import net.sourceforge.cobertura.reporting.generic.node.NodeType;
 import org.junit.Before;
 import org.junit.Test;
 

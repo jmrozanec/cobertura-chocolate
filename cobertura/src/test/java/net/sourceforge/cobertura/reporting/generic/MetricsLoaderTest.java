@@ -1,5 +1,8 @@
 package net.sourceforge.cobertura.reporting.generic;
 
+import net.sourceforge.cobertura.reporting.generic.metric.CrapMetric;
+import net.sourceforge.cobertura.reporting.generic.metric.ICustomMetric;
+import net.sourceforge.cobertura.reporting.generic.metric.MetricsLoader;
 import org.junit.Test;
 
 import java.util.Iterator;

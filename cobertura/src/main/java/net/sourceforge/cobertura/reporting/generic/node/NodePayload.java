@@ -1,5 +1,10 @@
-package net.sourceforge.cobertura.reporting.generic;
+package net.sourceforge.cobertura.reporting.generic.node;
 
+import net.sourceforge.cobertura.reporting.generic.Payload;
+import net.sourceforge.cobertura.reporting.generic.data.CoverageData;
+import net.sourceforge.cobertura.reporting.generic.metric.BasicMetric;
+import net.sourceforge.cobertura.reporting.generic.metric.IMetric;
+import net.sourceforge.cobertura.reporting.generic.metric.MetricRegistry;
 import org.simpleframework.xml.Element;
 
 /*
@@ -22,7 +27,7 @@ import org.simpleframework.xml.Element;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
-public class NodePayload implements Payload{
+public class NodePayload implements Payload {
 
     @Element(required = false)
     private Object content;

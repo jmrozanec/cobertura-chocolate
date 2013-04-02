@@ -1,8 +1,9 @@
 package net.sourceforge.cobertura.reporting.generic;
 
-import net.sourceforge.cobertura.reporting.generic.filter.Relation;
 import net.sourceforge.cobertura.reporting.generic.filter.TypeFilter;
 import net.sourceforge.cobertura.reporting.generic.filter.criteria.EqCriteria;
+import net.sourceforge.cobertura.reporting.generic.node.Node;
+import net.sourceforge.cobertura.reporting.generic.node.NodeType;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 

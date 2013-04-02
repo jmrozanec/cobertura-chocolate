@@ -1,6 +1,6 @@
 package net.sourceforge.cobertura.reporting.generic.filter;
 
-import net.sourceforge.cobertura.reporting.generic.Node;
+import net.sourceforge.cobertura.reporting.generic.node.Node;
 
 import java.util.ArrayList;
 import java.util.HashSet;

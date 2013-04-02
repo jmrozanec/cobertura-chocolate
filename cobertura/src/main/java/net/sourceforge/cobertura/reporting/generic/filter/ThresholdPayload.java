@@ -1,6 +1,6 @@
 package net.sourceforge.cobertura.reporting.generic.filter;
 
-import net.sourceforge.cobertura.reporting.generic.IMetric;
+import net.sourceforge.cobertura.reporting.generic.metric.IMetric;
 import net.sourceforge.cobertura.reporting.generic.Threshold;
 
 /*

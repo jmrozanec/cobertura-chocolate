@@ -7,6 +7,8 @@ import net.sourceforge.cobertura.reporting.generic.filter.TypeFilter;
 import net.sourceforge.cobertura.reporting.generic.filter.criteria.Criteria;
 import net.sourceforge.cobertura.reporting.generic.filter.criteria.EqCriteria;
 import net.sourceforge.cobertura.reporting.generic.filter.criteria.ORListedCriteria;
+import net.sourceforge.cobertura.reporting.generic.node.Node;
+import net.sourceforge.cobertura.reporting.generic.node.NodeType;
 import net.sourceforge.cobertura.reporting.html.files.CopyFiles;
 import net.sourceforge.cobertura.util.Header;
 import net.sourceforge.cobertura.util.IOUtil;

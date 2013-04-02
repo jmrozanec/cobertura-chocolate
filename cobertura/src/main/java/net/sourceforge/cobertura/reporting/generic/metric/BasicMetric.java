@@ -1,7 +1,4 @@
-package net.sourceforge.cobertura.reporting.generic;
-
-import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.Root;
+package net.sourceforge.cobertura.reporting.generic.metric;
 
 /*
  * Cobertura - http://cobertura.sourceforge.net/
@@ -23,32 +20,29 @@ import org.simpleframework.xml.Root;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
-@Root(name="metric")
-public class MetricWrapper {
-
-    @Attribute
+public class BasicMetric implements IMetric{
     private String name;
-    @Attribute
+    private String description;
     private double value;
-    @Attribute
-    private String metricDescription;
 
-    public MetricWrapper(){}
-    public MetricWrapper(IMetric metric){
-        this.name = metric.getName();
-        this.value = metric.getValue();
-        this.metricDescription = metric.getMetricDescription();
+    public BasicMetric(String name, String description, double value){
+        this.name = name;
+        this.description = description;
+        this.value = value;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public double getValue() {
         return value;
     }
 
+    @Override
     public String getMetricDescription() {
-        return metricDescription;
+        return description;
     }
 }

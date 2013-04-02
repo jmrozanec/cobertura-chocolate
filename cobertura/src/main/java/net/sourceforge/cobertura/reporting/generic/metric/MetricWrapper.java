@@ -1,6 +1,8 @@
-package net.sourceforge.cobertura.reporting.generic;
+package net.sourceforge.cobertura.reporting.generic.metric;
 
+import net.sourceforge.cobertura.reporting.generic.metric.IMetric;
 import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Root;
 
 /*
  * Cobertura - http://cobertura.sourceforge.net/
@@ -22,35 +24,32 @@ import org.simpleframework.xml.Attribute;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
-public class CoverageData {
+@Root(name="metric")
+public class MetricWrapper {
 
-    public CoverageData(){}
-
-    public CoverageData(double total,
-                        double covered,
-                        double coverageRate){
-        this.total = total;
-        this.covered=covered;
-        this.coverageRate=coverageRate;
-    }
     @Attribute
-    private double total;
+    private String name;
     @Attribute
-    private double covered;
-
-    /*   Percentage we have   */
+    private double value;
     @Attribute
-    private double coverageRate;
+    private String metricDescription;
 
-    public double getTotal() {
-        return total;
+    public MetricWrapper(){}
+    public MetricWrapper(IMetric metric){
+        this.name = metric.getName();
+        this.value = metric.getValue();
+        this.metricDescription = metric.getMetricDescription();
     }
 
-    public double getCovered() {
-        return covered;
+    public String getName() {
+        return name;
     }
 
-    public double getCoverageRate() {
-        return coverageRate;
+    public double getValue() {
+        return value;
+    }
+
+    public String getMetricDescription() {
+        return metricDescription;
     }
 }

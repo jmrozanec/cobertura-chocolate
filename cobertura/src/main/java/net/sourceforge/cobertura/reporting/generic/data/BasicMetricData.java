@@ -1,4 +1,4 @@
-package net.sourceforge.cobertura.reporting.generic;
+package net.sourceforge.cobertura.reporting.generic.data;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;

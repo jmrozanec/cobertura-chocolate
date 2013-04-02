@@ -1,5 +1,6 @@
 package net.sourceforge.cobertura.reporting.generic;
 
+import net.sourceforge.cobertura.reporting.generic.node.NodeType;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 

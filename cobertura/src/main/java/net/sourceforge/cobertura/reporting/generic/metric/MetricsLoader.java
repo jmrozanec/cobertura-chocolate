@@ -1,4 +1,4 @@
-package net.sourceforge.cobertura.reporting.generic;
+package net.sourceforge.cobertura.reporting.generic.metric;
 
 import org.apache.log4j.Logger;
 import org.reflections.Reflections;

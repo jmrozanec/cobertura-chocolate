@@ -1,6 +1,12 @@
 package net.sourceforge.cobertura.reporting.generic;
 
+import net.sourceforge.cobertura.reporting.generic.data.CoverageData;
 import net.sourceforge.cobertura.reporting.generic.filter.Relation;
+import net.sourceforge.cobertura.reporting.generic.metric.ICustomMetric;
+import net.sourceforge.cobertura.reporting.generic.metric.MetricsLoader;
+import net.sourceforge.cobertura.reporting.generic.node.Node;
+import net.sourceforge.cobertura.reporting.generic.node.NodePayload;
+import net.sourceforge.cobertura.reporting.generic.node.NodeType;
 import net.sourceforge.cobertura.reporting.xml.SetWrapper;
 import org.apache.log4j.Logger;
 
@@ -26,7 +32,7 @@ import java.util.*;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
-public class GenericReportEntry extends BaseNode implements Node{
+public class GenericReportEntry extends BaseNode implements Node {
 
     private static final Logger log = Logger.getLogger(GenericReportEntry.class);
 

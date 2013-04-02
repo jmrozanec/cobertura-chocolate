@@ -1,6 +1,6 @@
 package net.sourceforge.cobertura.reporting.xml;
 
-import net.sourceforge.cobertura.reporting.generic.Node;
+import net.sourceforge.cobertura.reporting.generic.node.Node;
 import org.simpleframework.xml.ElementList;
 
 import java.io.Serializable;

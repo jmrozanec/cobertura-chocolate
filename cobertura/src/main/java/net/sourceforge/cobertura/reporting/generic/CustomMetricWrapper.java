@@ -1,5 +1,6 @@
 package net.sourceforge.cobertura.reporting.generic;
 
+import net.sourceforge.cobertura.reporting.generic.metric.ICustomMetric;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 

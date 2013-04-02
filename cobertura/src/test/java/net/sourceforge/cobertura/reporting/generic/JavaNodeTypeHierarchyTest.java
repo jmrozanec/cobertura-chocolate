@@ -1,5 +1,6 @@
 package net.sourceforge.cobertura.reporting.generic;
 
+import net.sourceforge.cobertura.reporting.generic.node.NodeType;
 import org.junit.Test;
 
 import java.util.ArrayList;

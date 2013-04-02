@@ -1,4 +1,6 @@
-package net.sourceforge.cobertura.reporting.generic;
+package net.sourceforge.cobertura.reporting.generic.metric;
+
+import net.sourceforge.cobertura.reporting.generic.node.NodeType;
 
 /*
  * Cobertura - http://cobertura.sourceforge.net/
@@ -20,29 +22,27 @@ package net.sourceforge.cobertura.reporting.generic;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
-public class BasicMetric implements IMetric{
-    private String name;
-    private String description;
-    private double value;
+public interface ICustomMetric extends IMetric{
+    /**
+     * Returns the node type to which the metric applies.
+     * @return
+     */
+    NodeType getApplicableType();
 
-    public BasicMetric(String name, String description, double value){
-        this.name = name;
-        this.description = description;
-        this.value = value;
-    }
+    //TODO this should be modified so that we can leverage any existing metrics
+    //TODO and not depend on BasicMetricData
+    /**
+     * Sets a MetricRegistry, so that can access other node metrics to perform calculations.
+     *
+     * @param registry
+     */
+    void setMetricRegistry(MetricRegistry registry);
 
+    /**
+     * Metric value;
+     * Must throw an InsufficientInfoException if has no enough data to perform the calculation.
+     * @return
+     */
     @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public double getValue() {
-        return value;
-    }
-
-    @Override
-    public String getMetricDescription() {
-        return description;
-    }
+    double getValue();
 }

@@ -2,6 +2,8 @@ package net.sourceforge.cobertura.reporting.generic;
 
 import net.sourceforge.cobertura.reporting.generic.filter.Filter;
 import net.sourceforge.cobertura.reporting.generic.filter.Relation;
+import net.sourceforge.cobertura.reporting.generic.node.Node;
+import net.sourceforge.cobertura.reporting.generic.node.NodeType;
 import net.sourceforge.cobertura.reporting.xml.SetWrapper;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
@@ -29,7 +31,7 @@ import java.util.*;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
-public class BaseNode implements Node{
+public class BaseNode implements Node {
 
     @ElementMap(key = "relation", entry = "nodes")
     protected Map<Relation, SetWrapper> nodes;

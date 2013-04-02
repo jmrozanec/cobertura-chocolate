@@ -1,4 +1,6 @@
-package net.sourceforge.cobertura.reporting.generic;
+package net.sourceforge.cobertura.reporting.generic.data;
+
+import org.simpleframework.xml.Attribute;
 
 /*
  * Cobertura - http://cobertura.sourceforge.net/
@@ -20,27 +22,35 @@ package net.sourceforge.cobertura.reporting.generic;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
-public interface ICustomMetric extends IMetric{
-    /**
-     * Returns the node type to which the metric applies.
-     * @return
-     */
-    NodeType getApplicableType();
+public class CoverageData {
 
-    //TODO this should be modified so that we can leverage any existing metrics
-    //TODO and not depend on BasicMetricData
-    /**
-     * Sets a MetricRegistry, so that can access other node metrics to perform calculations.
-     *
-     * @param registry
-     */
-    void setMetricRegistry(MetricRegistry registry);
+    public CoverageData(){}
 
-    /**
-     * Metric value;
-     * Must throw an InsufficientInfoException if has no enough data to perform the calculation.
-     * @return
-     */
-    @Override
-    double getValue();
+    public CoverageData(double total,
+                        double covered,
+                        double coverageRate){
+        this.total = total;
+        this.covered=covered;
+        this.coverageRate=coverageRate;
+    }
+    @Attribute
+    private double total;
+    @Attribute
+    private double covered;
+
+    /*   Percentage we have   */
+    @Attribute
+    private double coverageRate;
+
+    public double getTotal() {
+        return total;
+    }
+
+    public double getCovered() {
+        return covered;
+    }
+
+    public double getCoverageRate() {
+        return coverageRate;
+    }
 }

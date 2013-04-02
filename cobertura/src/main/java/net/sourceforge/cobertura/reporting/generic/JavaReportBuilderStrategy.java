@@ -26,6 +26,8 @@ import net.sourceforge.cobertura.reporting.generic.filter.NameFilter;
 import net.sourceforge.cobertura.reporting.generic.filter.Relation;
 import net.sourceforge.cobertura.reporting.generic.filter.criteria.EqCriteria;
 import net.sourceforge.cobertura.reporting.generic.filter.RelationFilter;
+import net.sourceforge.cobertura.reporting.generic.node.Node;
+import net.sourceforge.cobertura.reporting.generic.node.NodeType;
 import net.sourceforge.cobertura.util.Constants;
 import net.sourceforge.cobertura.util.FileFinder;
 import org.apache.log4j.Logger;
@@ -73,7 +75,7 @@ public class JavaReportBuilderStrategy implements IReportBuilderStrategy {
                             //complete missing lines with sourcefile data
                             if(lineEntry==null){
                                 Node node = new GenericReportEntry(NodeType.LINE, ""+line.getLineNumber(),
-                                        new CoverageData(), new CoverageData(),0, 0);
+                                        new net.sourceforge.cobertura.reporting.generic.data.CoverageData(), new net.sourceforge.cobertura.reporting.generic.data.CoverageData(),0, 0);
                                 sourceEntry.addNode(Relation.LINE, node);
                             }else{
                                 lineEntry.getPayload().setContent(line.getCodeLine());
@@ -108,14 +110,14 @@ public class JavaReportBuilderStrategy implements IReportBuilderStrategy {
     @Deprecated
     private GenericReportEntry buildProjectReportEntry(
             ProjectData project, ComplexityCalculator complexity, List<GenericReportEntry> projects) {
-        CoverageData branchCoverage =
-                new CoverageData(
+        net.sourceforge.cobertura.reporting.generic.data.CoverageData branchCoverage =
+                new net.sourceforge.cobertura.reporting.generic.data.CoverageData(
                         project.getNumberOfValidBranches(),
                         project.getNumberOfCoveredBranches(),
                         project.getBranchCoverageRate());
 
-        CoverageData lineCoverage =
-                new CoverageData(
+        net.sourceforge.cobertura.reporting.generic.data.CoverageData lineCoverage =
+                new net.sourceforge.cobertura.reporting.generic.data.CoverageData(
                         project.getNumberOfValidLines(),
                         project.getNumberOfCoveredLines(),
                         project.getLineCoverageRate());
@@ -140,14 +142,14 @@ public class JavaReportBuilderStrategy implements IReportBuilderStrategy {
         while (iterator.hasNext()) {
             PackageData data = iterator.next();
 
-            CoverageData branchCoverage =
-                    new CoverageData(
+            net.sourceforge.cobertura.reporting.generic.data.CoverageData branchCoverage =
+                    new net.sourceforge.cobertura.reporting.generic.data.CoverageData(
                             data.getNumberOfValidBranches(),
                             data.getNumberOfCoveredBranches(),
                             data.getBranchCoverageRate());
 
-            CoverageData lineCoverage =
-                    new CoverageData(
+            net.sourceforge.cobertura.reporting.generic.data.CoverageData lineCoverage =
+                    new net.sourceforge.cobertura.reporting.generic.data.CoverageData(
                             data.getNumberOfValidLines(),
                             data.getNumberOfCoveredLines(),
                             data.getLineCoverageRate());
@@ -178,14 +180,14 @@ public class JavaReportBuilderStrategy implements IReportBuilderStrategy {
     @Deprecated
     private GenericReportEntry buildSourceFileReportEntry(
             SourceFileData data, ComplexityCalculator complexity) {
-        CoverageData branchCoverage =
-                new CoverageData(
+        net.sourceforge.cobertura.reporting.generic.data.CoverageData branchCoverage =
+                new net.sourceforge.cobertura.reporting.generic.data.CoverageData(
                         data.getNumberOfValidBranches(),
                         data.getNumberOfCoveredBranches(),
                         data.getBranchCoverageRate());
 
-        CoverageData lineCoverage =
-                new CoverageData(
+        net.sourceforge.cobertura.reporting.generic.data.CoverageData lineCoverage =
+                new net.sourceforge.cobertura.reporting.generic.data.CoverageData(
                         data.getNumberOfValidLines(),
                         data.getNumberOfCoveredLines(),
                         data.getLineCoverageRate());
@@ -203,14 +205,14 @@ public class JavaReportBuilderStrategy implements IReportBuilderStrategy {
     private void buildClassReportEntry(
             ClassData data, ComplexityCalculator complexity,
             GenericReportEntry sfentry) {
-        CoverageData branchCoverage =
-                new CoverageData(
+        net.sourceforge.cobertura.reporting.generic.data.CoverageData branchCoverage =
+                new net.sourceforge.cobertura.reporting.generic.data.CoverageData(
                         data.getNumberOfValidBranches(),
                         data.getNumberOfCoveredBranches(),
                         data.getBranchCoverageRate());
 
-        CoverageData lineCoverage =
-                new CoverageData(
+        net.sourceforge.cobertura.reporting.generic.data.CoverageData lineCoverage =
+                new net.sourceforge.cobertura.reporting.generic.data.CoverageData(
                         data.getNumberOfValidLines(),
                         data.getNumberOfCoveredLines(),
                         data.getLineCoverageRate());
@@ -242,10 +244,10 @@ public class JavaReportBuilderStrategy implements IReportBuilderStrategy {
                 lineEntries.add(
                         new GenericReportEntry(NodeType.LINE,
                                 "" + line.getLineNumber(),
-                                new CoverageData(line.getNumberOfCoveredBranches(),
+                                new net.sourceforge.cobertura.reporting.generic.data.CoverageData(line.getNumberOfCoveredBranches(),
                                         line.getNumberOfValidBranches(),
                                         line.getBranchCoverageRate()),
-                                new CoverageData(line.getNumberOfCoveredLines(),
+                                new net.sourceforge.cobertura.reporting.generic.data.CoverageData(line.getNumberOfCoveredLines(),
                                         line.getNumberOfValidLines(),
                                         line.getLineCoverageRate()),
                                 0, line.getHits()));
@@ -263,10 +265,10 @@ public class JavaReportBuilderStrategy implements IReportBuilderStrategy {
                     new GenericReportEntry(
                             NodeType.METHOD,
                             methodName,
-                            new CoverageData(methodCoveredBranches,
+                            new net.sourceforge.cobertura.reporting.generic.data.CoverageData(methodCoveredBranches,
                                     methodValidBranches,
                                     getRate(methodCoveredBranches, methodValidBranches)),
-                            new CoverageData(methodCoveredLines,
+                            new net.sourceforge.cobertura.reporting.generic.data.CoverageData(methodCoveredLines,
                                     methodValidLines,
                                     getRate(methodCoveredLines, methodValidLines)),
                             -1, methodHits);
@@ -320,7 +322,7 @@ public class JavaReportBuilderStrategy implements IReportBuilderStrategy {
 
     private GenericReportEntry buildLine(SourceFileEntry entry){
         GenericReportEntry genericReportEntry = new GenericReportEntry(NodeType.LINE,
-                ""+entry.getLineNumber(), new CoverageData(0,0,0), new CoverageData(0,0,0), 0,0);
+                ""+entry.getLineNumber(), new net.sourceforge.cobertura.reporting.generic.data.CoverageData(0,0,0), new net.sourceforge.cobertura.reporting.generic.data.CoverageData(0,0,0), 0,0);
 
         return genericReportEntry;
     }
@@ -349,14 +351,14 @@ public class JavaReportBuilderStrategy implements IReportBuilderStrategy {
     //valid for all data types except for lineData, which is CoverageData interface!
     private GenericReportEntry buildNode(CoverageDataContainer data, ComplexityCalculator complexity) {
         //TODO replace CoverageData for BasicMetrics and use Node API
-        CoverageData branchCoverage =
-                new CoverageData(
+        net.sourceforge.cobertura.reporting.generic.data.CoverageData branchCoverage =
+                new net.sourceforge.cobertura.reporting.generic.data.CoverageData(
                         data.getNumberOfValidBranches(),
                         data.getNumberOfCoveredBranches(),
                         data.getBranchCoverageRate());
 
-        CoverageData lineCoverage =
-                new CoverageData(
+        net.sourceforge.cobertura.reporting.generic.data.CoverageData lineCoverage =
+                new net.sourceforge.cobertura.reporting.generic.data.CoverageData(
                         data.getNumberOfValidLines(),
                         data.getNumberOfCoveredLines(),
                         data.getLineCoverageRate());
@@ -373,10 +375,10 @@ public class JavaReportBuilderStrategy implements IReportBuilderStrategy {
     private GenericReportEntry buildLineNode(LineData data) {
         return new GenericReportEntry(NodeType.LINE,
                 "" + data.getLineNumber(),
-                new CoverageData(data.getNumberOfCoveredBranches(),
+                new net.sourceforge.cobertura.reporting.generic.data.CoverageData(data.getNumberOfCoveredBranches(),
                         data.getNumberOfValidBranches(),
                         data.getBranchCoverageRate()),
-                new CoverageData(data.getNumberOfCoveredLines(),
+                new net.sourceforge.cobertura.reporting.generic.data.CoverageData(data.getNumberOfCoveredLines(),
                         data.getNumberOfValidLines(),
                         data.getLineCoverageRate()),
                 0, data.getHits());
@@ -471,7 +473,7 @@ public class JavaReportBuilderStrategy implements IReportBuilderStrategy {
         return Relation.METHOD;
     }
 
-    private CoverageData castToCoverageData(Object object){
-        return (CoverageData)object;
+    private net.sourceforge.cobertura.reporting.generic.data.CoverageData castToCoverageData(Object object){
+        return (net.sourceforge.cobertura.reporting.generic.data.CoverageData)object;
     }
 }

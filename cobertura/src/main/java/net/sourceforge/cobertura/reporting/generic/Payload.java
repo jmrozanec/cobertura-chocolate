@@ -1,5 +1,7 @@
 package net.sourceforge.cobertura.reporting.generic;
 
+import net.sourceforge.cobertura.reporting.generic.metric.IMetric;
+
 /*
  * Cobertura - http://cobertura.sourceforge.net/
  *

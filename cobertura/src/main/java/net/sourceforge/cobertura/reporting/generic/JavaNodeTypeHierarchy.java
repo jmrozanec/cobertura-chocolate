@@ -21,6 +21,8 @@ package net.sourceforge.cobertura.reporting.generic;
  * USA
  */
 
+import net.sourceforge.cobertura.reporting.generic.node.NodeType;
+
 import java.util.Arrays;
 
 public class JavaNodeTypeHierarchy extends AbstractNodeTypeHierarchy {
