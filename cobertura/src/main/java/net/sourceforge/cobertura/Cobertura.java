@@ -3,9 +3,9 @@ package net.sourceforge.cobertura;
 import net.sourceforge.cobertura.coveragedata.CoverageDataFileHandler;
 import net.sourceforge.cobertura.coveragedata.ProjectData;
 import net.sourceforge.cobertura.instrument.CodeInstrumentationTask;
-import net.sourceforge.cobertura.reporting.generic.GenericReport;
-import net.sourceforge.cobertura.reporting.generic.IReportBuilderFactory;
-import net.sourceforge.cobertura.reporting.generic.ReportBuilderFactory;
+import net.sourceforge.cobertura.reporting.generic.report.Report;
+import net.sourceforge.cobertura.reporting.generic.report.IReportBuilderFactory;
+import net.sourceforge.cobertura.reporting.generic.report.ReportBuilderFactory;
 import net.sourceforge.cobertura.util.FileFinder;
 
 import java.util.ArrayList;
@@ -93,7 +93,7 @@ public class Cobertura {
      * Creates a report with coverage and metrics data
      * @return
      */
-    public GenericReport report(){
+    public Report report(){
         if(!didApplyInstrumentationResults){
             applyInstrumentationResults();
         }

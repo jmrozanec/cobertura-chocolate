@@ -3,9 +3,9 @@ package net.sourceforge.cobertura.ant;
 import net.sourceforge.cobertura.Arguments;
 import net.sourceforge.cobertura.Cobertura;
 import net.sourceforge.cobertura.coveragedata.CoverageDataFileHandler;
-import net.sourceforge.cobertura.reporting.generic.GenericReport;
-import net.sourceforge.cobertura.reporting.generic.GenericReportEntry;
-import net.sourceforge.cobertura.reporting.generic.ReportConstants;
+import net.sourceforge.cobertura.reporting.generic.report.Report;
+import net.sourceforge.cobertura.reporting.generic.report.GenericReportEntry;
+import net.sourceforge.cobertura.reporting.generic.report.ReportConstants;
 import net.sourceforge.cobertura.reporting.html.HTMLReportFormatStrategy;
 import net.sourceforge.cobertura.reporting.xml.XmlReportFormatStrategy;
 import net.sourceforge.cobertura.util.DirectoryClassLoader;
@@ -90,7 +90,7 @@ public class CodeInstrumentationIntegrationTest {
         Class testClass = classLoader.loadClass("test.first.FirstTest");
         new JUnitCore().run(testClass);
 
-        GenericReport report = cobertura.report();
+        Report report = cobertura.report();
         report.export(new HTMLReportFormatStrategy(new File("/tmp"), "UTF-8"));
 
 //        cleanFiles(basedir);

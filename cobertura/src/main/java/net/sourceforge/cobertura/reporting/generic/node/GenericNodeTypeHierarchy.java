@@ -1,6 +1,4 @@
-package net.sourceforge.cobertura.reporting.generic;
-
-import net.sourceforge.cobertura.reporting.generic.node.NodeType;
+package net.sourceforge.cobertura.reporting.generic.node;
 
 import java.util.ArrayList;
 
@@ -16,7 +14,7 @@ import java.util.ArrayList;
  * generalize this to accept a Set of hierarchies...
  */
 @Deprecated
-public class GenericNodeTypeHierarchy extends AbstractNodeTypeHierarchy{
+public class GenericNodeTypeHierarchy extends AbstractNodeTypeHierarchy {
 
     private GenericNodeTypeHierarchy(){}
 

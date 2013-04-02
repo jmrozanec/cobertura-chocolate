@@ -1,9 +1,10 @@
-package net.sourceforge.cobertura.reporting.generic;
+package net.sourceforge.cobertura.reporting.generic.node;
 
 import net.sourceforge.cobertura.reporting.generic.filter.Filter;
 import net.sourceforge.cobertura.reporting.generic.filter.Relation;
 import net.sourceforge.cobertura.reporting.generic.node.Node;
 import net.sourceforge.cobertura.reporting.generic.node.NodeType;
+import net.sourceforge.cobertura.reporting.generic.node.Payload;
 import net.sourceforge.cobertura.reporting.xml.SetWrapper;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;

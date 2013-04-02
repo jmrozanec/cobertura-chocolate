@@ -19,7 +19,6 @@ package net.sourceforge.cobertura.reporting.generic.node;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
-import net.sourceforge.cobertura.reporting.generic.Payload;
 import net.sourceforge.cobertura.reporting.generic.filter.Filter;
 import net.sourceforge.cobertura.reporting.generic.filter.Relation;
 

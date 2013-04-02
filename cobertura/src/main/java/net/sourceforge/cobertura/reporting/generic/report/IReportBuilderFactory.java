@@ -1,9 +1,9 @@
-package net.sourceforge.cobertura.reporting.generic;
+package net.sourceforge.cobertura.reporting.generic.report;
 
 /*
  * Cobertura - http://cobertura.sourceforge.net/
  *
- * Copyright (C) 2011 Jose M. Rozanec
+ * Copyright (C) 2012 Jose M. Rozanec
  *
  * Cobertura is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published
@@ -20,21 +20,7 @@ package net.sourceforge.cobertura.reporting.generic;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
+public interface IReportBuilderFactory {
 
-import net.sourceforge.cobertura.reporting.generic.node.NodeType;
-
-import java.util.Arrays;
-
-public class JavaNodeTypeHierarchy extends AbstractNodeTypeHierarchy {
-
-    public JavaNodeTypeHierarchy(){
-        levels = Arrays.asList(new NodeType[]{
-                NodeType.LINE,
-                NodeType.METHOD,
-                NodeType.CLASS,
-                NodeType.SOURCE,
-                NodeType.PACKAGE,
-                NodeType.PROJECT
-        });
-    }
+    IReportBuilderStrategy getInstance(String targetedLanguage);
 }

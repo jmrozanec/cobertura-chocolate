@@ -1,4 +1,4 @@
-package net.sourceforge.cobertura.reporting.generic;
+package net.sourceforge.cobertura.reporting.generic.report;
 
 /*
  * Cobertura - http://cobertura.sourceforge.net/

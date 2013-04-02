@@ -1,6 +1,7 @@
-package net.sourceforge.cobertura.reporting.generic;
+package net.sourceforge.cobertura.reporting.generic.node;
 
 import net.sourceforge.cobertura.reporting.generic.node.NodeType;
+import net.sourceforge.cobertura.reporting.generic.node.NodeTypeHierarchy;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * and should be sorted from lowest level to highest level (ex.: LINE ... PROJECT)
  */
 @Deprecated
-public class AbstractNodeTypeHierarchy implements NodeTypeHierarchy{
+public class AbstractNodeTypeHierarchy implements NodeTypeHierarchy {
 
     protected List<NodeType>levels;
 

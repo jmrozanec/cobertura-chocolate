@@ -1,6 +1,6 @@
 package net.sourceforge.cobertura.comparator;
 
-import net.sourceforge.cobertura.reporting.generic.GenericReportEntry;
+import net.sourceforge.cobertura.reporting.generic.report.GenericReportEntry;
 
 import java.util.Comparator;
 

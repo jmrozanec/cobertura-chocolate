@@ -1,12 +1,10 @@
-package net.sourceforge.cobertura.reporting.generic;
+package net.sourceforge.cobertura.reporting.generic.report;
 
 import net.sourceforge.cobertura.reporting.generic.data.CoverageData;
 import net.sourceforge.cobertura.reporting.generic.filter.Relation;
 import net.sourceforge.cobertura.reporting.generic.metric.ICustomMetric;
 import net.sourceforge.cobertura.reporting.generic.metric.MetricsLoader;
-import net.sourceforge.cobertura.reporting.generic.node.Node;
-import net.sourceforge.cobertura.reporting.generic.node.NodePayload;
-import net.sourceforge.cobertura.reporting.generic.node.NodeType;
+import net.sourceforge.cobertura.reporting.generic.node.*;
 import net.sourceforge.cobertura.reporting.xml.SetWrapper;
 import org.apache.log4j.Logger;
 

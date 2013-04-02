@@ -1,6 +1,10 @@
-package net.sourceforge.cobertura.reporting.generic;
+package net.sourceforge.cobertura.reporting.threshold;
 
 import net.sourceforge.cobertura.reporting.generic.metric.threshold.Threshold;
+import net.sourceforge.cobertura.reporting.generic.report.GenericReportEntry;
+import net.sourceforge.cobertura.reporting.generic.report.IReportFormatStrategy;
+import net.sourceforge.cobertura.reporting.generic.report.Report;
+import net.sourceforge.cobertura.reporting.generic.report.ReportConstants;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
@@ -42,7 +46,7 @@ public class ValidateThresholdReportStrategy implements IReportFormatStrategy {
     }
 
     @Override
-    public void save(GenericReport report) {
+    public void save(Report report) {
         List<GenericReportEntry> entries =
                 report.getEntriesForLevel(ReportConstants.level_all);
 

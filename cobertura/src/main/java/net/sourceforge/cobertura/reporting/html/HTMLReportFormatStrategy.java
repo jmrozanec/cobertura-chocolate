@@ -7,8 +7,13 @@ import net.sourceforge.cobertura.reporting.generic.filter.TypeFilter;
 import net.sourceforge.cobertura.reporting.generic.filter.criteria.Criteria;
 import net.sourceforge.cobertura.reporting.generic.filter.criteria.EqCriteria;
 import net.sourceforge.cobertura.reporting.generic.filter.criteria.ORListedCriteria;
+import net.sourceforge.cobertura.reporting.generic.node.JavaNodeTypeHierarchy;
 import net.sourceforge.cobertura.reporting.generic.node.Node;
 import net.sourceforge.cobertura.reporting.generic.node.NodeType;
+import net.sourceforge.cobertura.reporting.generic.report.GenericReportEntry;
+import net.sourceforge.cobertura.reporting.generic.report.IReportFormatStrategy;
+import net.sourceforge.cobertura.reporting.generic.report.Report;
+import net.sourceforge.cobertura.reporting.generic.report.ReportConstants;
 import net.sourceforge.cobertura.reporting.html.files.CopyFiles;
 import net.sourceforge.cobertura.util.Header;
 import net.sourceforge.cobertura.util.IOUtil;
@@ -53,7 +58,7 @@ public class HTMLReportFormatStrategy implements IReportFormatStrategy {
     private static final String branchCoverageDesc = "The percent of branches executed by this test run.";
 
     @Override
-    public void save(GenericReport report) {
+    public void save(Report report) {
         log.info("Will save report to " + destinationDir.getAbsolutePath());
         this.projectData = report;
 
@@ -80,13 +85,13 @@ public class HTMLReportFormatStrategy implements IReportFormatStrategy {
     }
 
     /*
-     * The following lines were copied from HTMLReport and adapted to GenericReport
+     * The following lines were copied from HTMLReport and adapted to Report
      * this code should be refactored to use some library to generate HTML markup.
      * See: http://code.google.com/p/jatl/
      */
 
     private File destinationDir;
-    private GenericReport projectData;
+    private Report projectData;
     private String encoding;
 
     /**

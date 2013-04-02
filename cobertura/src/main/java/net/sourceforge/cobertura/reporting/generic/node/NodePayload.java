@@ -1,6 +1,5 @@
 package net.sourceforge.cobertura.reporting.generic.node;
 
-import net.sourceforge.cobertura.reporting.generic.Payload;
 import net.sourceforge.cobertura.reporting.generic.data.CoverageData;
 import net.sourceforge.cobertura.reporting.generic.metric.FixedValueMetric;
 import net.sourceforge.cobertura.reporting.generic.metric.IMetric;

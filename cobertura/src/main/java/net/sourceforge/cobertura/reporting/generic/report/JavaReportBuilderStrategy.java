@@ -1,4 +1,4 @@
-package net.sourceforge.cobertura.reporting.generic;
+package net.sourceforge.cobertura.reporting.generic.report;
 /*
  * Cobertura - http://cobertura.sourceforge.net/
  *
@@ -21,6 +21,7 @@ package net.sourceforge.cobertura.reporting.generic;
  */
 import net.sourceforge.cobertura.coveragedata.*;
 import net.sourceforge.cobertura.reporting.ComplexityCalculator;
+import net.sourceforge.cobertura.reporting.generic.*;
 import net.sourceforge.cobertura.reporting.generic.filter.CompositeFilter;
 import net.sourceforge.cobertura.reporting.generic.filter.NameFilter;
 import net.sourceforge.cobertura.reporting.generic.filter.Relation;
@@ -35,7 +36,7 @@ import org.apache.log4j.Logger;
 import java.util.*;
 
 /**
- * Handles ProjectData information and puts it into a GenericReport object.
+ * Handles ProjectData information and puts it into a Report object.
  * Assumes ProjectData information corresponds to a Java project.
  */
 public class JavaReportBuilderStrategy implements IReportBuilderStrategy {
@@ -48,7 +49,7 @@ public class JavaReportBuilderStrategy implements IReportBuilderStrategy {
     public JavaReportBuilderStrategy() {
     }
 
-    public GenericReport getReport(
+    public Report getReport(
             List<ProjectData> projects,
             String sourceEncoding, FileFinder finder) {
         this.encoding = sourceEncoding;
@@ -85,7 +86,7 @@ public class JavaReportBuilderStrategy implements IReportBuilderStrategy {
                     }
                 }
             }
-        return new GenericReport(nodes);
+        return new Report(nodes);
     }
 
     @Override

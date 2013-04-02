@@ -19,7 +19,7 @@ public abstract class MetricFactory {
 
   public abstract IMetric getInstance(NewNode node);
 
-  /**
+    /**
    * @param predicate - predicate to determine if a Node instance should get a metric instance;
    * @return MetricFactory instance;
    */

@@ -1,6 +1,4 @@
-package net.sourceforge.cobertura.reporting.generic;
-
-import net.sourceforge.cobertura.reporting.generic.metric.IMetric;
+package net.sourceforge.cobertura.reporting.generic.report;
 
 /*
  * Cobertura - http://cobertura.sourceforge.net/
@@ -22,12 +20,7 @@ import net.sourceforge.cobertura.reporting.generic.metric.IMetric;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
-@Deprecated
-public interface Payload {
+public interface IReportFormatStrategy {
 
-    Object getContent();
-    void setContent(Object content);
-
-    IMetric getMetric(String name);
-    void putMetric(IMetric metric);
+    void save(Report report);
 }

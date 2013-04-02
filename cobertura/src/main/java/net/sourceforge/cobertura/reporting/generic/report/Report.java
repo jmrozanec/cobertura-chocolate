@@ -1,5 +1,6 @@
-package net.sourceforge.cobertura.reporting.generic;
+package net.sourceforge.cobertura.reporting.generic.report;
 
+import net.sourceforge.cobertura.reporting.generic.SourceFileEntry;
 import net.sourceforge.cobertura.reporting.generic.filter.TypeFilter;
 import net.sourceforge.cobertura.reporting.generic.filter.criteria.EqCriteria;
 import net.sourceforge.cobertura.reporting.generic.metric.threshold.Threshold;
@@ -36,9 +37,9 @@ import java.util.*;
  * This class groups data to be reported,
  * so that can be easily accessed when building reports.
  */
-public class GenericReport {
+public class Report {
 
-    //TODO refactor GenericReport
+    //TODO refactor Report
     //holds date, code graph and a thresholds tree
     //provide means to check thresholds against metrics
 
@@ -51,12 +52,12 @@ public class GenericReport {
     @ElementList(inline=true)
     private Set<Node> entries;
 
-    public GenericReport(){
+    public Report(){
         thresholds = new HashSet<Threshold>();
         entries = new HashSet<Node>();
     }
 
-    public GenericReport(Set<Node> entries){
+    public Report(Set<Node> entries){
         created = DateTime.now();
         thresholds = new HashSet<Threshold>();
         this.entries = Collections.unmodifiableSet(entries);

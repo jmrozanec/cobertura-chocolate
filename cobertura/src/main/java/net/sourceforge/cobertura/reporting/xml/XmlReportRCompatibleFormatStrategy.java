@@ -29,7 +29,7 @@ public class XmlReportRCompatibleFormatStrategy {
 //        sw.getBuffer().append("<?xml version=\"1.0\"?>");
 //
 //        //todo currently does not directly support xml.
-//        // We can adapt original code to take metrics from GenericReport
+//        // We can adapt original code to take metrics from Report
 //        new Html(sw) {{
 //            html().xmlns("http://www.w3.org/1999/xhtml").attr("xml:lang", "en").attr("lang", "en");
 //
