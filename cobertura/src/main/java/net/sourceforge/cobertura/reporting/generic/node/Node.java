@@ -25,6 +25,7 @@ import net.sourceforge.cobertura.reporting.generic.filter.Relation;
 
 import java.util.Set;
 
+@Deprecated
 public interface Node {
     /**
      * Add node with relation.

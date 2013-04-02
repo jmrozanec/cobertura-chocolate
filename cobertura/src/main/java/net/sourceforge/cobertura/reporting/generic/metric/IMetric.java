@@ -39,6 +39,7 @@ public interface IMetric {
      */
     String getMetricDescription();
 
+    @Deprecated
     public enum BasicMetricsEnum{
         hits("Hits"), branch_coverage_rate("Branch coverage rate"), total_branches("Total branches"),
         covered_branches("Covered branches"), line_coverage_rate("Line coverage rate"),

@@ -282,7 +282,7 @@ public class JavaReportBuilderStrategy implements IReportBuilderStrategy {
     }
 
     /**
-     * Builds source file data. Retrieves all lines from source files and builds SourceFile instances.
+     * Builds source file data. Retrieves all lines from source files and builds SourceFileNode instances.
      * @param project
      */
     private void processSourceFileData(ProjectData project) {

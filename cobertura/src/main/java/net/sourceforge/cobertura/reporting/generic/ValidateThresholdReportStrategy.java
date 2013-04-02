@@ -1,5 +1,6 @@
 package net.sourceforge.cobertura.reporting.generic;
 
+import net.sourceforge.cobertura.reporting.generic.metric.threshold.Threshold;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 

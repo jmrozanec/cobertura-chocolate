@@ -1,4 +1,4 @@
-package net.sourceforge.cobertura.reporting.generic;
+package net.sourceforge.cobertura.reporting.generic.metric.threshold;
 
 import org.simpleframework.xml.Attribute;
 
