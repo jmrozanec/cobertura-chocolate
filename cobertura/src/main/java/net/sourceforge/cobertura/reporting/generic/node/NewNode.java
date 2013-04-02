@@ -22,7 +22,7 @@ package net.sourceforge.cobertura.reporting.generic.node;
 
 import com.google.common.base.Predicate;
 import net.sourceforge.cobertura.reporting.generic.metric.IMetric;
-import net.sourceforge.cobertura.reporting.generic.metric.MetricFactory;
+import net.sourceforge.cobertura.reporting.generic.metric.factory.MetricFactory;
 import net.sourceforge.cobertura.reporting.generic.metric.threshold.Threshold;
 import net.sourceforge.cobertura.reporting.generic.metric.threshold.ThresholdFactory;
 

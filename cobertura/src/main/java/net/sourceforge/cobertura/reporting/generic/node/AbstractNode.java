@@ -5,7 +5,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 import net.sourceforge.cobertura.reporting.generic.metric.IMetric;
-import net.sourceforge.cobertura.reporting.generic.metric.MetricFactory;
+import net.sourceforge.cobertura.reporting.generic.metric.factory.MetricFactory;
 import net.sourceforge.cobertura.reporting.generic.metric.threshold.Threshold;
 import net.sourceforge.cobertura.reporting.generic.metric.threshold.ThresholdFactory;
 
@@ -104,7 +104,7 @@ public abstract class AbstractNode implements NewNode{
   @Override
   public void addMetric(MetricFactory metricFactory) {
     if(metricFactory.match(this)){
-      metrics.add(metricFactory.getInstance());
+      metrics.add(metricFactory.getInstance(this));
     }
   }
 
