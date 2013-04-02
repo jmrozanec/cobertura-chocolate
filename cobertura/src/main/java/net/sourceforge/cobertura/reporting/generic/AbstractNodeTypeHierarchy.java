@@ -9,6 +9,7 @@ import java.util.List;
  * levels list should contain all NodeTypes for that hierarchy
  * and should be sorted from lowest level to highest level (ex.: LINE ... PROJECT)
  */
+@Deprecated
 public class AbstractNodeTypeHierarchy implements NodeTypeHierarchy{
 
     protected List<NodeType>levels;

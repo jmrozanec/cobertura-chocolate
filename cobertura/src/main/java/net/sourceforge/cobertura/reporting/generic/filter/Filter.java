@@ -28,6 +28,7 @@ import java.util.Set;
 /**
  * Defines a condition to filter nodes.
  */
+@Deprecated
 public interface Filter {
     /**
      * Filters given node and returns a Set with that node if not filtered

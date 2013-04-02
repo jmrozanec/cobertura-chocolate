@@ -15,6 +15,7 @@ import java.util.ArrayList;
  * If all nodes provide same lang provider, we use it, otherwise we combine them into a Generic one.
  * generalize this to accept a Set of hierarchies...
  */
+@Deprecated
 public class GenericNodeTypeHierarchy extends AbstractNodeTypeHierarchy{
 
     private GenericNodeTypeHierarchy(){}

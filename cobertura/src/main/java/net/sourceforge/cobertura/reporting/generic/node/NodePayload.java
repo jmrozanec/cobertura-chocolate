@@ -2,7 +2,7 @@ package net.sourceforge.cobertura.reporting.generic.node;
 
 import net.sourceforge.cobertura.reporting.generic.Payload;
 import net.sourceforge.cobertura.reporting.generic.data.CoverageData;
-import net.sourceforge.cobertura.reporting.generic.metric.BasicMetric;
+import net.sourceforge.cobertura.reporting.generic.metric.FixedValueMetric;
 import net.sourceforge.cobertura.reporting.generic.metric.IMetric;
 import net.sourceforge.cobertura.reporting.generic.metric.MetricRegistry;
 import org.simpleframework.xml.Element;
@@ -27,6 +27,7 @@ import org.simpleframework.xml.Element;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
+@Deprecated
 public class NodePayload implements Payload {
 
     @Element(required = false)
@@ -39,10 +40,10 @@ public class NodePayload implements Payload {
         metrics = new MetricRegistry();
 
         IMetric.BasicMetricsEnum metric = IMetric.BasicMetricsEnum.hits;
-        putMetric(new BasicMetric(metric.toString(), metric.desc(), hits));
+        putMetric(new FixedValueMetric(metric.toString(), metric.desc(), hits));
 
         metric = IMetric.BasicMetricsEnum.ccn;
-        putMetric(new BasicMetric(metric.toString(), metric.desc(), cyclomaticCodeComplexity));
+        putMetric(new FixedValueMetric(metric.toString(), metric.desc(), cyclomaticCodeComplexity));
 
         buildBranchMetrics(branchCoverage);
         buildLineMetrics(lineCoverage);
@@ -70,23 +71,23 @@ public class NodePayload implements Payload {
 
     private void buildBranchMetrics(CoverageData branch){
         IMetric.BasicMetricsEnum metric = IMetric.BasicMetricsEnum.branch_coverage_rate;
-        putMetric(new BasicMetric(metric.toString(), metric.desc(), branch.getCoverageRate()));
+        putMetric(new FixedValueMetric(metric.toString(), metric.desc(), branch.getCoverageRate()));
 
         metric = IMetric.BasicMetricsEnum.covered_branches;
-        putMetric(new BasicMetric(metric.toString(), metric.desc(), branch.getCovered()));
+        putMetric(new FixedValueMetric(metric.toString(), metric.desc(), branch.getCovered()));
 
         metric = IMetric.BasicMetricsEnum.total_branches;
-        putMetric(new BasicMetric(metric.toString(), metric.desc(), branch.getTotal()));
+        putMetric(new FixedValueMetric(metric.toString(), metric.desc(), branch.getTotal()));
     }
 
     private void buildLineMetrics(CoverageData line){
         IMetric.BasicMetricsEnum metric = IMetric.BasicMetricsEnum.line_coverage_rate;
-        putMetric(new BasicMetric(metric.toString(), metric.desc(), line.getCoverageRate()));
+        putMetric(new FixedValueMetric(metric.toString(), metric.desc(), line.getCoverageRate()));
 
         metric = IMetric.BasicMetricsEnum.covered_lines;
-        putMetric(new BasicMetric(metric.toString(), metric.desc(), line.getCovered()));
+        putMetric(new FixedValueMetric(metric.toString(), metric.desc(), line.getCovered()));
 
         metric = IMetric.BasicMetricsEnum.total_lines;
-        putMetric(new BasicMetric(metric.toString(), metric.desc(), line.getTotal()));
+        putMetric(new FixedValueMetric(metric.toString(), metric.desc(), line.getTotal()));
     }
 }

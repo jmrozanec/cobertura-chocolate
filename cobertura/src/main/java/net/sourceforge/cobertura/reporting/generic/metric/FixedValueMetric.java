@@ -20,12 +20,12 @@ package net.sourceforge.cobertura.reporting.generic.metric;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
-public class BasicMetric implements IMetric{
+public class FixedValueMetric implements IMetric{
     private String name;
     private String description;
     private double value;
 
-    public BasicMetric(String name, String description, double value){
+    public FixedValueMetric(String name, String description, double value){
         this.name = name;
         this.description = description;
         this.value = value;

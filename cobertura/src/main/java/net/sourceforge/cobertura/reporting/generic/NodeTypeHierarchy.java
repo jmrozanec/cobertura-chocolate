@@ -2,6 +2,7 @@ package net.sourceforge.cobertura.reporting.generic;
 
 import net.sourceforge.cobertura.reporting.generic.node.NodeType;
 
+@Deprecated
 public interface NodeTypeHierarchy {
 
     /**

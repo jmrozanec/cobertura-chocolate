@@ -22,6 +22,7 @@ import net.sourceforge.cobertura.reporting.generic.metric.IMetric;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
+@Deprecated
 public interface Payload {
 
     Object getContent();

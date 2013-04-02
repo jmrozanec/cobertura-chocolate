@@ -22,6 +22,7 @@ import net.sourceforge.cobertura.reporting.generic.node.NodeType;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
+@Deprecated
 public interface ICustomMetric extends IMetric{
     /**
      * Returns the node type to which the metric applies.

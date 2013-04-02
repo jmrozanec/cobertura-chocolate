@@ -1,180 +1,183 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>net.sourceforge.cobertura</groupId>
-	<artifactId>cobertura</artifactId>
-	<version>1.9.4.2</version>
-	<packaging>jar</packaging>
-	<name>Cobertura</name>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>net.sourceforge.cobertura</groupId>
+    <artifactId>cobertura</artifactId>
+    <version>1.9.4.2</version>
+    <packaging>jar</packaging>
+    <name>Cobertura</name>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<fork>true</fork>
-					<source>1.6</source>
-					<target>1.6</target>
-					<excludes>
-                        			<exclude>**/test/*.java</exclude>
-                    			</excludes>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.3.2</version>
-			</plugin>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <fork>true</fork>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <excludes>
+                        <exclude>**/test/*.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.3.2</version>
+            </plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.12.3</version>
-				<configuration>
-                                	<excludes>
-						<exclude>**/test/first/FirstTest.java</exclude>
-                                	</excludes>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.3</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/test/first/FirstTest.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.8.1</version>
-			</plugin>
-		</plugins>
-	</reporting>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.8.1</version>
+            </plugin>
+        </plugins>
+    </reporting>
 
-	<properties>
-		<!--<json-simple.version>1.1</json-simple.version>-->
-	</properties>
+    <properties>
+        <!--<json-simple.version>1.1</json-simple.version>-->
+    </properties>
 
-		<dependencies>
-			<dependency>
-				<groupId>asm</groupId>
-				<artifactId>asm</artifactId>
-				<version>3.1</version>
-			</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>3.1</version>
+        </dependency>
 
-			<dependency>
-				<groupId>asm</groupId>
-				<artifactId>asm-tree</artifactId>
-				<version>3.3.1</version>
-			</dependency>
-            
-			<dependency>
-				<groupId>xerces</groupId>
-				<artifactId>xercesImpl</artifactId>
-				<version>2.6.2</version>
-			</dependency>
+        <dependency>
+            <groupId>asm</groupId>
+            <artifactId>asm-tree</artifactId>
+            <version>3.3.1</version>
+        </dependency>
 
-			<dependency>
-				<groupId>log4j</groupId>
-				<artifactId>log4j</artifactId>
-				<version>1.2.9</version>
-			</dependency>
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.6.2</version>
+        </dependency>
 
-			<dependency>
-				<groupId>xalan</groupId>
-				<artifactId>xalan</artifactId>
-				<version>2.6.0</version>
-			</dependency>
-            
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.10</version>
-			</dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.9</version>
+        </dependency>
 
-			<dependency>
-				<groupId>oro</groupId>
-				<artifactId>oro</artifactId>
-				<version>2.0.8</version>
-			</dependency>
-            
-			<dependency>
-				<groupId>jaxen</groupId>
-				<artifactId>jaxen</artifactId>
-				<version>1.1-beta-8</version>
-			</dependency>
-            
-			<dependency>
-				<groupId>org.apache.ant</groupId>
-				<artifactId>ant</artifactId>
-				<version>1.8.3</version>
-			</dependency>
+        <dependency>
+            <groupId>xalan</groupId>
+            <artifactId>xalan</artifactId>
+            <version>2.6.0</version>
+        </dependency>
 
-			<dependency>
-				<groupId>org.apache.ant</groupId>
-				<artifactId>ant-junit</artifactId>
-				<version>1.8.3</version>
-			</dependency>
-            
-			<dependency>
-				<groupId>org.eclipse.jetty</groupId>
-				<artifactId>jetty-servlet</artifactId>
-				<version>8.1.2.v20120308</version>
-			</dependency>
-            
-			<dependency>
-				<groupId>org.simpleframework</groupId>
-				<artifactId>simple-xml</artifactId>
-				<version>2.6.2</version>
-			</dependency>
-            
-			<dependency>
-				<groupId>org.codehaus.groovy</groupId>
-				<artifactId>groovy-all</artifactId>
-				<version>1.8.6</version>
-			</dependency>
+        <dependency>
+            <groupId>oro</groupId>
+            <artifactId>oro</artifactId>
+            <version>2.0.8</version>
+        </dependency>
 
-			<dependency>
-				<groupId>com.google.guava</groupId>
-				<artifactId>guava</artifactId>
-				<version>13.0.1</version>
-			</dependency>
-            
-			
-			<!-- Add a library that makes reflection easy to use -->
-			<!-- This is used to dynamically load classes implementing some interface provided as extension point -->
-			<dependency>
-            			<groupId>org.reflections</groupId>
-            			<artifactId>reflections</artifactId>
-            			<version>0.9.8</version>
-		        </dependency>
+        <dependency>
+            <groupId>jaxen</groupId>
+            <artifactId>jaxen</artifactId>
+            <version>1.1-beta-8</version>
+        </dependency>
 
-			<!-- This library is used to make html code more mantainable -->
-			<dependency>
-				<groupId>com.googlecode.jatl</groupId>
-				<artifactId>jatl</artifactId>
-				<version>0.2.1</version>
-			</dependency>
+        <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant</artifactId>
+            <version>1.8.3</version>
+        </dependency>
 
-			<dependency>
-    				<groupId>com.google.code.javaparser</groupId>
-    				<artifactId>javaparser</artifactId>
-    				<version>1.0.8</version>
-			</dependency>
+        <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant-junit</artifactId>
+            <version>1.8.3</version>
+        </dependency>
 
-			<dependency>
-				<groupId>org.mockito</groupId>
-				<artifactId>mockito-all</artifactId>
-				<version>1.9.0</version>
-			</dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlet</artifactId>
+            <version>8.1.2.v20120308</version>
+        </dependency>
 
-            <dependency>
-                <groupId>commons-codec</groupId>
-                <artifactId>commons-codec</artifactId>
-                <version>1.7</version>
-            </dependency>
+        <dependency>
+            <groupId>org.simpleframework</groupId>
+            <artifactId>simple-xml</artifactId>
+            <version>2.6.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>1.8.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>13.0.1</version>
+        </dependency>
 
 
-        </dependencies>
+        <!-- Add a library that makes reflection easy to use -->
+        <!-- This is used to dynamically load classes implementing some interface provided as extension point -->
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.8</version>
+        </dependency>
+
+        <!-- This library is used to make html code more mantainable -->
+        <dependency>
+            <groupId>com.googlecode.jatl</groupId>
+            <artifactId>jatl</artifactId>
+            <version>0.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.javaparser</groupId>
+            <artifactId>javaparser</artifactId>
+            <version>1.0.8</version>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+        </dependency>
+
+    </dependencies>
 </project>

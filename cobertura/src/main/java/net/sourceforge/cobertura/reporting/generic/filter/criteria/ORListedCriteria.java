@@ -22,6 +22,7 @@ import java.util.Set;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
+@Deprecated
 public class ORListedCriteria implements Criteria {
 
     private Set<Criteria> criterias;

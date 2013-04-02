@@ -20,6 +20,7 @@ package net.sourceforge.cobertura.reporting.generic.filter.criteria;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
+@Deprecated
 public class AlwaysMatchCriteria implements Criteria {
     @Override
     public boolean matches(Object element) {

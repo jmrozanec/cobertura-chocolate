@@ -32,6 +32,7 @@ import java.util.*;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
+@Deprecated
 public class GenericReportEntry extends BaseNode implements Node {
 
     private static final Logger log = Logger.getLogger(GenericReportEntry.class);

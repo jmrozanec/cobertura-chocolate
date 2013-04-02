@@ -4,6 +4,7 @@ import net.sourceforge.cobertura.reporting.generic.filter.TypeFilter;
 import net.sourceforge.cobertura.reporting.generic.filter.criteria.EqCriteria;
 import net.sourceforge.cobertura.reporting.generic.node.Node;
 import net.sourceforge.cobertura.reporting.generic.node.NodeType;
+import org.joda.time.DateTime;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 
@@ -41,7 +42,7 @@ public class GenericReport {
     //provide means to check thresholds against metrics
 
     @Attribute
-    private Date created;
+    private DateTime created;
 
     @ElementList(inline=true)
     private Set<Threshold>thresholds;
@@ -55,7 +56,7 @@ public class GenericReport {
     }
 
     public GenericReport(Set<Node> entries){
-        created = new Date();
+        created = DateTime.now();
         thresholds = new HashSet<Threshold>();
         this.entries = Collections.unmodifiableSet(entries);
     }

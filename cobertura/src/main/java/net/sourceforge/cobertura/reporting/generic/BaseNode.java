@@ -31,6 +31,7 @@ import java.util.*;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
+@Deprecated
 public class BaseNode implements Node {
 
     @ElementMap(key = "relation", entry = "nodes")
