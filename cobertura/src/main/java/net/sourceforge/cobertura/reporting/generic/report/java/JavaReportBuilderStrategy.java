@@ -1,4 +1,4 @@
-package net.sourceforge.cobertura.reporting.generic.report;
+package net.sourceforge.cobertura.reporting.generic.report.java;
 /*
  * Cobertura - http://cobertura.sourceforge.net/
  *
@@ -29,6 +29,7 @@ import net.sourceforge.cobertura.reporting.generic.filter.criteria.EqCriteria;
 import net.sourceforge.cobertura.reporting.generic.filter.RelationFilter;
 import net.sourceforge.cobertura.reporting.generic.node.Node;
 import net.sourceforge.cobertura.reporting.generic.node.NodeType;
+import net.sourceforge.cobertura.reporting.generic.report.*;
 import net.sourceforge.cobertura.util.Constants;
 import net.sourceforge.cobertura.util.FileFinder;
 import org.apache.log4j.Logger;
@@ -90,8 +91,8 @@ public class JavaReportBuilderStrategy implements IReportBuilderStrategy {
     }
 
     @Override
-    public String getTargetedLanguage() {
-        return Constants.targeted_lang_java;
+    public JVMLanguage getTargetedLanguage() {
+        return JVMLanguage.JAVA;
     }
 
     private void buildMetricsForProject(List<GenericReportEntry> projectEntries) {

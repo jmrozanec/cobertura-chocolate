@@ -53,8 +53,7 @@ public class Report {
     private Set<Node> entries;
 
     public Report(){
-        thresholds = new HashSet<Threshold>();
-        entries = new HashSet<Node>();
+      this(new HashSet<Node>());
     }
 
     public Report(Set<Node> entries){

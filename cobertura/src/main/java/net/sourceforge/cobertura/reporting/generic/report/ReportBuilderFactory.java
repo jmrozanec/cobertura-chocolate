@@ -1,5 +1,6 @@
 package net.sourceforge.cobertura.reporting.generic.report;
 
+import net.sourceforge.cobertura.util.Constants;
 import org.apache.log4j.Logger;
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
@@ -46,7 +47,8 @@ public class ReportBuilderFactory implements IReportBuilderFactory{
             try {
                 IReportBuilderStrategy strategy =
                         (IReportBuilderStrategy) Class.forName(iterator.next().getName()).newInstance();
-                strategies.put(strategy.getTargetedLanguage(),strategy);
+                //TODO replace Constants for strategy.getTargetedLang().
+                strategies.put(Constants.targeted_lang_java,strategy);
             } catch (Exception e) {
                 log.error("An error occurred while loading metrics", e);
             }

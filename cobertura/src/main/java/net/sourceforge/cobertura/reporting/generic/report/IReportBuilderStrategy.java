@@ -46,5 +46,5 @@ public interface IReportBuilderStrategy {
      * of interpreting information from.
      * @return
      */
-    String getTargetedLanguage();
+    JVMLanguage getTargetedLanguage();
 }

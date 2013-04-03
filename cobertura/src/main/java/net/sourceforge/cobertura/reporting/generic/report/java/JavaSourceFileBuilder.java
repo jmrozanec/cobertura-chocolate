@@ -1,4 +1,4 @@
-package net.sourceforge.cobertura.reporting.generic;
+package net.sourceforge.cobertura.reporting.generic.report.java;
 /*
  * Cobertura - http://cobertura.sourceforge.net/
  *
@@ -27,6 +27,8 @@ import japa.parser.ast.PackageDeclaration;
 import japa.parser.ast.body.ClassOrInterfaceDeclaration;
 import japa.parser.ast.body.MethodDeclaration;
 import japa.parser.ast.visitor.VoidVisitorAdapter;
+import net.sourceforge.cobertura.reporting.generic.SourceFile;
+import net.sourceforge.cobertura.reporting.generic.SourceFileEntry;
 import net.sourceforge.cobertura.util.FileFinder;
 import net.sourceforge.cobertura.util.Source;
 
