@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jmrozanec/cobertura-chocolate.png)](https://travis-ci.org/jmrozanec/cobertura-chocolate)
+
 # Cobertura
 
 This repository aims to be a contribution to the Cobertura project. Current code is an [MVP - minimum viable product](http://www.startuplessonslearned.com/2009/03/minimum-viable-product.html) to test if there is interest on Cobertura community for further development of some features and changes we introduce.
