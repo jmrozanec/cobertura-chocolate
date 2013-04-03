@@ -10,3 +10,6 @@ cobertura/target/
 .settings/
 .idea
 *.iml
+
+#Ignore Cobertura report files
+**/coberturaXmlReport.xml
