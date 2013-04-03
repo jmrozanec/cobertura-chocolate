@@ -22,6 +22,7 @@ import org.simpleframework.xml.Attribute;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
+@Deprecated
 public class SourceFileEntry implements Comparable{
     @Attribute
     private String className;
