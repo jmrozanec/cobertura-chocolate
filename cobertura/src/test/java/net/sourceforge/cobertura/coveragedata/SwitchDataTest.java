@@ -21,11 +21,10 @@
 
 package net.sourceforge.cobertura.coveragedata;
 
-import java.util.concurrent.atomic.AtomicReference;
-
-import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.concurrent.atomic.AtomicReference;
 
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

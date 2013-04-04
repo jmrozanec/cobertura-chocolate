@@ -21,8 +21,6 @@
 
 package net.sourceforge.cobertura.reporting.xml;
 
-import java.io.File;
-
 import net.sourceforge.cobertura.coveragedata.ClassData;
 import net.sourceforge.cobertura.coveragedata.ProjectData;
 import net.sourceforge.cobertura.reporting.ComplexityCalculator;
@@ -32,9 +30,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static net.sourceforge.cobertura.testutil.Util.createRequiredDirectories;
-import static net.sourceforge.cobertura.testutil.Util.removeRequiredDirectories;
-import static net.sourceforge.cobertura.testutil.Util.removeTestReportFiles;
+import java.io.File;
+
+import static net.sourceforge.cobertura.testutil.Util.*;
 
 public class XMLReportTest{
 

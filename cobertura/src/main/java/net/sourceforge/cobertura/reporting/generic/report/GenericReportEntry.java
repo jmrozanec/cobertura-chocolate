@@ -8,7 +8,8 @@ import net.sourceforge.cobertura.reporting.generic.node.*;
 import net.sourceforge.cobertura.reporting.xml.SetWrapper;
 import org.apache.log4j.Logger;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Set;
 
 /*
  * Cobertura - http://cobertura.sourceforge.net/

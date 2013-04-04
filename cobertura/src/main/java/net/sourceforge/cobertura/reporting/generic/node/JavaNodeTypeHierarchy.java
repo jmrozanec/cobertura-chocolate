@@ -21,9 +21,6 @@ package net.sourceforge.cobertura.reporting.generic.node;
  * USA
  */
 
-import net.sourceforge.cobertura.reporting.generic.node.AbstractNodeTypeHierarchy;
-import net.sourceforge.cobertura.reporting.generic.node.NodeType;
-
 import java.util.Arrays;
 
 @Deprecated

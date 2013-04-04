@@ -25,11 +25,10 @@
 
 package net.sourceforge.cobertura.coveragedata.countermaps;
 
-import java.util.Map;
-
 import junit.framework.Assert;
-
 import org.junit.Test;
+
+import java.util.Map;
 
 
 public class AtomicCounterMapTest {

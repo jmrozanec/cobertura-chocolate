@@ -1,7 +1,7 @@
 package net.sourceforge.cobertura.reporting.generic.metric;
 
-import net.sourceforge.cobertura.reporting.generic.node.NodeType;
 import net.sourceforge.cobertura.reporting.generic.data.BasicMetricData;
+import net.sourceforge.cobertura.reporting.generic.node.NodeType;
 
 public class CrapMetric implements ICustomMetric {
 

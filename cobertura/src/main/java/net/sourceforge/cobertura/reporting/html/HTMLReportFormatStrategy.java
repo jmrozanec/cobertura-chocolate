@@ -2,7 +2,8 @@ package net.sourceforge.cobertura.reporting.html;
 
 import com.googlecode.jatl.Html;
 import net.sourceforge.cobertura.comparator.GRENameComparator;
-import net.sourceforge.cobertura.reporting.generic.*;
+import net.sourceforge.cobertura.reporting.generic.SourceFile;
+import net.sourceforge.cobertura.reporting.generic.SourceFileEntry;
 import net.sourceforge.cobertura.reporting.generic.filter.TypeFilter;
 import net.sourceforge.cobertura.reporting.generic.filter.criteria.Criteria;
 import net.sourceforge.cobertura.reporting.generic.filter.criteria.EqCriteria;

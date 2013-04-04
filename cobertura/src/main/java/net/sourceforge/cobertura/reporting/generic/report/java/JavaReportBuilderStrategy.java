@@ -19,22 +19,26 @@ package net.sourceforge.cobertura.reporting.generic.report.java;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
+
 import net.sourceforge.cobertura.coveragedata.*;
 import net.sourceforge.cobertura.reporting.ComplexityCalculator;
-import net.sourceforge.cobertura.reporting.generic.*;
+import net.sourceforge.cobertura.reporting.generic.SourceFile;
+import net.sourceforge.cobertura.reporting.generic.SourceFileEntry;
 import net.sourceforge.cobertura.reporting.generic.filter.CompositeFilter;
 import net.sourceforge.cobertura.reporting.generic.filter.NameFilter;
 import net.sourceforge.cobertura.reporting.generic.filter.Relation;
-import net.sourceforge.cobertura.reporting.generic.filter.criteria.EqCriteria;
 import net.sourceforge.cobertura.reporting.generic.filter.RelationFilter;
+import net.sourceforge.cobertura.reporting.generic.filter.criteria.EqCriteria;
 import net.sourceforge.cobertura.reporting.generic.node.Node;
 import net.sourceforge.cobertura.reporting.generic.node.NodeType;
 import net.sourceforge.cobertura.reporting.generic.report.*;
-import net.sourceforge.cobertura.util.Constants;
 import net.sourceforge.cobertura.util.FileFinder;
 import org.apache.log4j.Logger;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Handles ProjectData information and puts it into a Report object.

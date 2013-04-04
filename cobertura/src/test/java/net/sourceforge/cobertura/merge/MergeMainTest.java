@@ -20,11 +20,6 @@
  */
 package net.sourceforge.cobertura.merge;
 
-import java.util.List;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-
 import net.sourceforge.cobertura.coveragedata.ClassData;
 import net.sourceforge.cobertura.coveragedata.CoverageDataFileHandler;
 import net.sourceforge.cobertura.coveragedata.ProjectData;
@@ -32,6 +27,11 @@ import net.sourceforge.cobertura.util.Constants;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

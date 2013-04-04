@@ -25,10 +25,9 @@
 
 package net.sourceforge.cobertura.coveragedata;
 
-import java.util.concurrent.atomic.AtomicReference;
-
-import junit.framework.TestCase;
 import org.junit.Test;
+
+import java.util.concurrent.atomic.AtomicReference;
 
 public class TouchCollectorTest{
 

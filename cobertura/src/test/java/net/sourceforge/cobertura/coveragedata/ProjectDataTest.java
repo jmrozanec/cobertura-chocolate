@@ -22,12 +22,11 @@
 
 package net.sourceforge.cobertura.coveragedata;
 
-import java.util.Iterator;
-import java.util.SortedSet;
-
-import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Iterator;
+import java.util.SortedSet;
 
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

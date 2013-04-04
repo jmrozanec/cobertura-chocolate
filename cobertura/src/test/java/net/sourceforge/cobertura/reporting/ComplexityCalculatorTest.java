@@ -26,14 +26,12 @@ import net.sourceforge.cobertura.coveragedata.ProjectData;
 import net.sourceforge.cobertura.coveragedata.SourceFileData;
 import net.sourceforge.cobertura.util.FileFinder;
 import net.sourceforge.cobertura.util.FileFixture;
-import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 public class ComplexityCalculatorTest{
     private FileFixture fileFixture;

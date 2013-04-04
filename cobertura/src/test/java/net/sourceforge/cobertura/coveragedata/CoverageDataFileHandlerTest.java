@@ -21,16 +21,14 @@
 
 package net.sourceforge.cobertura.coveragedata;
 
-import java.io.File;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
+
 import static junit.framework.Assert.assertEquals;
-import static net.sourceforge.cobertura.testutil.Util.createRequiredDirectories;
-import static net.sourceforge.cobertura.testutil.Util.removeRequiredDirectories;
-import static net.sourceforge.cobertura.testutil.Util.removeTestReportFiles;
+import static net.sourceforge.cobertura.testutil.Util.*;
 
 public class CoverageDataFileHandlerTest{
 

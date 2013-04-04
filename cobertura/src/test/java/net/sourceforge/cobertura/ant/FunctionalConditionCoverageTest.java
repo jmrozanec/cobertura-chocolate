@@ -26,40 +26,26 @@
 
 package net.sourceforge.cobertura.ant;
 
-import java.io.File;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.regex.Pattern;
-
 import net.sourceforge.cobertura.reporting.JUnitXMLHelper;
-
 import net.sourceforge.cobertura.testutil.Util;
 import org.apache.log4j.Logger;
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.taskdefs.Java;
-import org.apache.tools.ant.types.Environment;
 import org.apache.tools.ant.types.Path;
 import org.apache.tools.ant.types.Path.PathElement;
-import org.jdom.Attribute;
-import org.jdom.DataConversionException;
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.JDOMException;
+import org.jdom.*;
 import org.jdom.xpath.XPath;
-
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Ignore;
+import org.junit.Test;
 
-import static net.sourceforge.cobertura.testutil.Util.createRequiredDirectories;
-import static net.sourceforge.cobertura.testutil.Util.removeRequiredDirectories;
-import static net.sourceforge.cobertura.testutil.Util.removeTestReportFiles;
-import static net.sourceforge.cobertura.util.ArchiveUtil.deleteDir;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.util.*;
+
+import static net.sourceforge.cobertura.testutil.Util.*;
 import static org.junit.Assert.*;
 
 

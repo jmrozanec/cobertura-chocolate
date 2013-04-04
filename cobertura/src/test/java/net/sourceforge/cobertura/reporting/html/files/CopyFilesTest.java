@@ -21,17 +21,14 @@
 
 package net.sourceforge.cobertura.reporting.html.files;
 
-import java.io.File;
-import java.io.IOException;
-
-import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static net.sourceforge.cobertura.testutil.Util.createRequiredDirectories;
-import static net.sourceforge.cobertura.testutil.Util.removeRequiredDirectories;
-import static net.sourceforge.cobertura.testutil.Util.removeTestReportFiles;
+import java.io.File;
+import java.io.IOException;
+
+import static net.sourceforge.cobertura.testutil.Util.*;
 import static org.junit.Assert.assertTrue;
 
 public class CopyFilesTest{

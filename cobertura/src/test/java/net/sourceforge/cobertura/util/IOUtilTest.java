@@ -20,22 +20,12 @@
  */
 package net.sourceforge.cobertura.util;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
-import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import java.io.*;
+
+import static org.junit.Assert.*;
 
 /**
  * @author Grzegorz Lukasik

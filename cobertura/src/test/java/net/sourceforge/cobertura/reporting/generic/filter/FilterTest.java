@@ -1,7 +1,7 @@
 package net.sourceforge.cobertura.reporting.generic.filter;
 
-import net.sourceforge.cobertura.reporting.generic.node.BaseNode;
 import net.sourceforge.cobertura.reporting.generic.filter.criteria.EqCriteria;
+import net.sourceforge.cobertura.reporting.generic.node.BaseNode;
 import net.sourceforge.cobertura.reporting.generic.node.Node;
 import net.sourceforge.cobertura.reporting.generic.node.NodeType;
 import org.junit.Before;

@@ -28,13 +28,7 @@ package net.sourceforge.cobertura.testutil;
 
 import org.apache.log4j.Logger;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
 
 import static net.sourceforge.cobertura.util.ArchiveUtil.deleteDir;
 

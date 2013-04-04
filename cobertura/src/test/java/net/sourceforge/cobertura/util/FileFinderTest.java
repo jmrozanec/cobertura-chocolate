@@ -22,12 +22,12 @@
 
 package net.sourceforge.cobertura.util;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.io.File;
 import java.io.IOException;
-
-import junit.framework.*;
-import org.junit.*;
-import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

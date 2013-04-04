@@ -1,7 +1,7 @@
 package net.sourceforge.cobertura.reporting.xml;
 
-import net.sourceforge.cobertura.reporting.generic.report.Report;
 import net.sourceforge.cobertura.reporting.generic.report.IReportFormatStrategy;
+import net.sourceforge.cobertura.reporting.generic.report.Report;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 

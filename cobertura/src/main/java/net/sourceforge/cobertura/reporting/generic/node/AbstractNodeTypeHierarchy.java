@@ -1,8 +1,5 @@
 package net.sourceforge.cobertura.reporting.generic.node;
 
-import net.sourceforge.cobertura.reporting.generic.node.NodeType;
-import net.sourceforge.cobertura.reporting.generic.node.NodeTypeHierarchy;
-
 import java.util.List;
 
 /**

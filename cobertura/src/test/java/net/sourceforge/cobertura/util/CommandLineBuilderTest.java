@@ -24,17 +24,14 @@
  */
 package net.sourceforge.cobertura.util;
 
-import java.io.File;
-import java.io.IOException;
-
-import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.IOException;
+
 import static junit.framework.Assert.assertEquals;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * @author Grzegorz Lukasik

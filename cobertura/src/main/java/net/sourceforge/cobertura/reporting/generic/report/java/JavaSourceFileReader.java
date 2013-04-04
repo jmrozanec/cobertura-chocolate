@@ -1,19 +1,17 @@
 package net.sourceforge.cobertura.reporting.generic.report.java;
 
-import com.google.common.collect.Range;
-import com.google.common.collect.Ranges;
 import japa.parser.JavaParser;
 import japa.parser.ParseException;
-import japa.parser.ast.*;
+import japa.parser.ast.CompilationUnit;
+import japa.parser.ast.ImportDeclaration;
+import japa.parser.ast.PackageDeclaration;
 import japa.parser.ast.body.*;
 import japa.parser.ast.visitor.VoidVisitorAdapter;
-import net.sourceforge.cobertura.reporting.generic.SourceFile;
-import net.sourceforge.cobertura.reporting.generic.SourceFileEntry;
 import net.sourceforge.cobertura.util.FileFinder;
 import net.sourceforge.cobertura.util.Source;
 
 import java.io.*;
-import java.util.*;
+
 /*
  * Cobertura - http://cobertura.sourceforge.net/
  *
@@ -34,19 +32,6 @@ import java.util.*;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
-import com.google.common.collect.Range;
-import com.google.common.collect.Ranges;
-import japa.parser.JavaParser;
-import japa.parser.ast.CompilationUnit;
-import japa.parser.ast.PackageDeclaration;
-import japa.parser.ast.body.ClassOrInterfaceDeclaration;
-import japa.parser.ast.body.MethodDeclaration;
-import japa.parser.ast.visitor.VoidVisitorAdapter;
-import net.sourceforge.cobertura.util.FileFinder;
-import net.sourceforge.cobertura.util.Source;
-
-import java.io.*;
-import java.util.*;
 
 public class JavaSourceFileReader {
 

@@ -21,7 +21,6 @@
 
 package net.sourceforge.cobertura.reporting.html;
 
-import junit.framework.TestCase;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;

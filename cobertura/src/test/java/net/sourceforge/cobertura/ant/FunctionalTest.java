@@ -26,27 +26,9 @@
 
 package net.sourceforge.cobertura.ant;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-
-import net.sourceforge.cobertura.Arguments;
-import net.sourceforge.cobertura.Cobertura;
 import net.sourceforge.cobertura.coveragedata.ProjectData;
-import net.sourceforge.cobertura.coveragedata.TouchCollector;
 import net.sourceforge.cobertura.reporting.JUnitXMLHelper;
-
 import net.sourceforge.cobertura.testutil.Util;
-import net.sourceforge.cobertura.util.DirectoryClassLoader;
-import net.sourceforge.cobertura.util.ShutdownHooks;
 import org.apache.log4j.Logger;
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.taskdefs.Java;
@@ -56,18 +38,19 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.xpath.XPath;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Ignore;
-import org.junit.runner.JUnitCore;
+import org.junit.Test;
 
-import static net.sourceforge.cobertura.testutil.Util.createRequiredDirectories;
-import static net.sourceforge.cobertura.testutil.Util.removeRequiredDirectories;
-import static net.sourceforge.cobertura.testutil.Util.removeTestReportFiles;
-import static net.sourceforge.cobertura.util.ArchiveUtil.getFiles;
+import java.io.*;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
+import static net.sourceforge.cobertura.testutil.Util.*;
 import static net.sourceforge.cobertura.util.ArchiveUtil.saveGlobalProjectData;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 /**
  * These tests generally exec ant to run a test.xml file.  A different target is used for

@@ -3,14 +3,15 @@ package net.sourceforge.cobertura.ant;
 import net.sourceforge.cobertura.Arguments;
 import net.sourceforge.cobertura.Cobertura;
 import net.sourceforge.cobertura.coveragedata.CoverageDataFileHandler;
-import net.sourceforge.cobertura.reporting.generic.report.Report;
 import net.sourceforge.cobertura.reporting.generic.report.GenericReportEntry;
+import net.sourceforge.cobertura.reporting.generic.report.Report;
 import net.sourceforge.cobertura.reporting.generic.report.ReportConstants;
 import net.sourceforge.cobertura.reporting.html.HTMLReportFormatStrategy;
 import net.sourceforge.cobertura.reporting.xml.XmlReportFormatStrategy;
 import net.sourceforge.cobertura.util.DirectoryClassLoader;
 import org.apache.log4j.Logger;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 import javax.tools.JavaCompiler;
