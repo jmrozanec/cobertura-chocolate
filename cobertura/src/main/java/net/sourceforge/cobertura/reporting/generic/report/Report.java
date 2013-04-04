@@ -37,6 +37,7 @@ import java.util.*;
  * This class groups data to be reported,
  * so that can be easily accessed when building reports.
  */
+@Deprecated
 public class Report {
 
     //TODO refactor Report

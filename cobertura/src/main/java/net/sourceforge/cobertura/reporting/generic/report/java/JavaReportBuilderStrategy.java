@@ -44,6 +44,7 @@ import java.util.Set;
  * Handles ProjectData information and puts it into a Report object.
  * Assumes ProjectData information corresponds to a Java project.
  */
+@Deprecated
 public class JavaReportBuilderStrategy implements IReportBuilderStrategy {
     private static final Logger log = Logger.getLogger(JavaReportBuilderStrategy.class);
     private Set<SourceFile> sourceFiles;

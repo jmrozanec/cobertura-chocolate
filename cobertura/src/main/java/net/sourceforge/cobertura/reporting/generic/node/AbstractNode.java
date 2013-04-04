@@ -26,6 +26,8 @@ public abstract class AbstractNode implements NewNode{
   protected final int coveredBranches;
   protected final int totalLines;
   protected final int coveredLines;
+
+  //TODO we should set these values
   protected double cyclomaticComplexity;
   protected int hits;
 
