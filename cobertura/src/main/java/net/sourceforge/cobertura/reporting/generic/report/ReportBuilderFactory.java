@@ -45,10 +45,11 @@ public class ReportBuilderFactory implements IReportBuilderFactory{
                 reflections.getSubTypesOf(IReportBuilderStrategy.class).iterator();
         while (iterator.hasNext()) {
             try {
-                IReportBuilderStrategy strategy =
+              //TODO disabled loading by reflection until definite Java implementation
+              IReportBuilderStrategy strategy =
                         (IReportBuilderStrategy) Class.forName(iterator.next().getName()).newInstance();
-                //TODO replace Constants for strategy.getTargetedLang().
-                strategies.put(Constants.targeted_lang_java,strategy);
+
+                strategies.put(Constants.targeted_lang_java, strategy);
             } catch (Exception e) {
                 log.error("An error occurred while loading metrics", e);
             }

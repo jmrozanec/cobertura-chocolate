@@ -86,6 +86,16 @@ public interface NewNode {
   double getLinesRate();
 
   /**
+   * @return double - cyclomatic complexity for given node;
+   */
+  double getCNNComplexity();
+
+  /**
+   * @return int - number of hits to given node;
+   */
+  int getHits();
+
+  /**
    * Recursively creates IMetric instance for Node instances;
    * @param metricFactory
    */

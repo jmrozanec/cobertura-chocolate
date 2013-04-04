@@ -1,17 +1,13 @@
 package net.sourceforge.cobertura.reporting.generic.report;
 
-import net.sourceforge.cobertura.reporting.generic.SourceFileEntry;
-import net.sourceforge.cobertura.reporting.generic.filter.TypeFilter;
-import net.sourceforge.cobertura.reporting.generic.filter.criteria.EqCriteria;
 import net.sourceforge.cobertura.reporting.generic.metric.threshold.Threshold;
 import net.sourceforge.cobertura.reporting.generic.node.NewNode;
-import net.sourceforge.cobertura.reporting.generic.node.Node;
-import net.sourceforge.cobertura.reporting.generic.node.NodeType;
 import org.joda.time.DateTime;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.Set;
 
 /*
  * Cobertura - http://cobertura.sourceforge.net/
@@ -54,25 +50,6 @@ public class ReportNew {
   public void addThreshold(Threshold threshold) {
     //TODO
   }
-
-//  @Deprecated
-//  public List<GenericReportEntry> getEntriesForLevel(String level) {
-//    List<GenericReportEntry> entries = new ArrayList<GenericReportEntry>();
-//    for (Node entry : this.entries) {
-//      Collections.addAll((Collection) entries,
-//        (entry.getAllNodes(true, new TypeFilter(new EqCriteria(getType(level))))).toArray());
-//    }
-//    return entries;
-//  }
-//
-//  public Set<Threshold> getThresholds(GenericReportEntry entry) {
-//    return new HashSet<Threshold>();
-//  }
-//
-//  @Deprecated
-//  public Set<SourceFileEntry> getSourceLinesByClass(String className) {
-//    return new HashSet<SourceFileEntry>();
-//  }
 
   public void export(IReportFormatStrategy reportFormat) {
 //    reportFormat.save(this);//TODO refactor

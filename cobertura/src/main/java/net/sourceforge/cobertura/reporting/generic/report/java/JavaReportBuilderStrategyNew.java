@@ -1,31 +1,23 @@
 package net.sourceforge.cobertura.reporting.generic.report.java;
 
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
+import com.google.common.collect.Collections2;
 import com.google.common.collect.Sets;
 import japa.parser.ParseException;
 import net.sourceforge.cobertura.coveragedata.*;
 import net.sourceforge.cobertura.reporting.ComplexityCalculator;
-import net.sourceforge.cobertura.reporting.generic.report.java.JavaSourceFileBuilder;
 import net.sourceforge.cobertura.reporting.generic.SourceFile;
-import net.sourceforge.cobertura.reporting.generic.SourceFileEntry;
-import net.sourceforge.cobertura.reporting.generic.filter.CompositeFilter;
-import net.sourceforge.cobertura.reporting.generic.filter.NameFilter;
-import net.sourceforge.cobertura.reporting.generic.filter.Relation;
-import net.sourceforge.cobertura.reporting.generic.filter.RelationFilter;
-import net.sourceforge.cobertura.reporting.generic.filter.criteria.EqCriteria;
-import net.sourceforge.cobertura.reporting.generic.node.*;
-import net.sourceforge.cobertura.reporting.generic.node.java.PackageNode;
-import net.sourceforge.cobertura.reporting.generic.node.java.ProjectNode;
-import net.sourceforge.cobertura.reporting.generic.node.java.SourceFileNode;
-import net.sourceforge.cobertura.reporting.generic.report.*;
-import net.sourceforge.cobertura.util.Constants;
+import net.sourceforge.cobertura.reporting.generic.node.NewNode;
+import net.sourceforge.cobertura.reporting.generic.node.java.*;
+import net.sourceforge.cobertura.reporting.generic.report.JVMLanguage;
+import net.sourceforge.cobertura.reporting.generic.report.ReportNew;
 import net.sourceforge.cobertura.util.FileFinder;
 import org.apache.log4j.Logger;
 
+import javax.annotation.Nullable;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 /*
  * Cobertura - http://cobertura.sourceforge.net/
  *
@@ -51,7 +43,8 @@ import java.util.Set;
  * Handles ProjectData information and puts it into a Report object.
  * Assumes ProjectData information corresponds to a Java project.
  */
-public class JavaReportBuilderStrategyNew implements IReportBuilderStrategy {
+public class JavaReportBuilderStrategyNew {
+//implements IReportBuilderStrategy //TODO commented to avoid issues while loading by reflection
   private static final Logger log = Logger.getLogger(JavaReportBuilderStrategy.class);
   private Set<SourceFile> sourceFiles;
 
@@ -97,10 +90,25 @@ public class JavaReportBuilderStrategyNew implements IReportBuilderStrategy {
       sourceFileData.getNumberOfValidLines(),
       sourceFileData.getNumberOfCoveredLines()
     );
-    //TODO parse source file and extract comment lines and code lines. See how to introduce into class/method/line hierarchy
+
     try {
       JavaSourceFile sourceFile = new JavaSourceFileReader().build(fileFinder, sourceFileData.getName(), encoding);
 
+      Predicate<JavaSourceFileLine>linesDoNotBelongToAnyClass = new Predicate<JavaSourceFileLine>() {
+        @Override
+        public boolean apply(@Nullable JavaSourceFileLine javaSourceFileLine) {
+          return (javaSourceFileLine != null ? javaSourceFileLine.getClassName() : null) ==null;
+        }
+      };
+      for (JavaSourceFileLine line : sourceFile.getSourceFileLines(linesDoNotBelongToAnyClass)) {
+        LineNode lineNode = new LineNode("" + line.getLineNumber(), 0, 0, 1, 0);
+        lineNode.setLineString(line.getText());
+        node.addNode(lineNode);
+      }
+
+      for(Object o:sourceFileData.getClasses()){
+        node.addNode(buildClassNode((ClassData)o, sourceFile));
+      }
     } catch (IOException e) {
       //TODO handle
     } catch (ParseException e) {
@@ -109,11 +117,97 @@ public class JavaReportBuilderStrategyNew implements IReportBuilderStrategy {
     return node;
   }
 
-  private JavaSourceFile buildJavaSourceFile(SourceFileData sourceFileData){
-    return null;//TODO implement
+  private ClassNode buildClassNode(final ClassData classData, JavaSourceFile sourceFile){
+    ClassNode node = new ClassNode(
+        classData.getName(),
+        classData.getNumberOfValidBranches(),
+        classData.getNumberOfCoveredBranches(),
+        classData.getNumberOfValidLines(),
+        classData.getNumberOfCoveredLines()
+    );
+
+    Predicate<JavaSourceFileLine>sameClass = new Predicate<JavaSourceFileLine>() {
+      @Override
+      public boolean apply(@Nullable JavaSourceFileLine javaSourceFileLine) {
+        return javaSourceFileLine != null && javaSourceFileLine.getClassName().equals(classData.getName());
+      }
+    };
+    Predicate<JavaSourceFileLine>doesNotBelongToMethod = new Predicate<JavaSourceFileLine>() {
+      @Override
+      public boolean apply(@Nullable JavaSourceFileLine javaSourceFileLine) {
+        return (javaSourceFileLine != null ? javaSourceFileLine.getMethodName() : null) ==null;
+      }
+    };
+    for (JavaSourceFileLine line :
+        sourceFile.getSourceFileLines(Predicates.<JavaSourceFileLine>and(sameClass, doesNotBelongToMethod))) {
+      node.addNode(new LineNode("" + line.getLineNumber(), 0, 0, 1, 0));
+    }
+
+    for(final String method:classData.getMethodNamesAndDescriptors()){
+      Collection<CoverageData> lineDatas = Collections2.filter(classData.getLines(), new Predicate<CoverageData>() {
+        @Override
+        public boolean apply(@Nullable CoverageData coverageData) {
+          return coverageData != null && ((LineData) coverageData).getMethodName().equals(method);
+        }
+      });
+
+      node.addNode(buildMethodNode(method, sourceFile, lineDatas));
+    }
+    return node;
   }
 
-  public Report getReport(
+  private MethodNode buildMethodNode(final String method, JavaSourceFile sourceFile, Collection<CoverageData>lineDatas){
+    List<CoverageData>linesList = new ArrayList<CoverageData>(lineDatas);
+    Collections.sort(linesList, new Comparator<CoverageData>() {
+      @Override
+      public int compare(CoverageData o1, CoverageData o2) {
+        return ((LineData)o1).compareTo(o2);
+      }
+    });
+
+    Predicate<JavaSourceFileLine>sameMethod = new Predicate<JavaSourceFileLine>() {
+      @Override
+      public boolean apply(@Nullable JavaSourceFileLine javaSourceFileLine) {
+        return javaSourceFileLine != null && javaSourceFileLine.getMethodName().equals(method);
+      }
+    };
+
+    Iterator<CoverageData>lineDataIterator = linesList.iterator();
+    Iterator<JavaSourceFileLine> lines=sourceFile.getSourceFileLines(sameMethod).iterator();
+    int numberOfValidBranches = 0;
+    int numberOfCoveredBranches = 0;
+    int numberOfValidLines = 0;
+    int numberOfCoveredLines = 0;
+    Set<LineNode>lineNodes = Sets.newHashSet();
+    while(lines.hasNext()){
+      JavaSourceFileLine line = lines.next();
+      LineData lineData = (LineData)lineDataIterator.next();
+      LineNode lineNode = new LineNode(""+line.getLineNumber(), 
+          lineData.getNumberOfValidBranches(),
+          lineData.getNumberOfCoveredBranches(), 
+          lineData.getNumberOfValidLines(),
+          lineData.getNumberOfCoveredLines());
+      lineNode.setLineString(line.getText());
+      
+      numberOfValidBranches+=lineData.getNumberOfValidBranches();
+      numberOfCoveredBranches+=lineData.getNumberOfCoveredBranches();
+      numberOfValidLines+=lineData.getNumberOfValidLines();
+      numberOfCoveredLines+=lineData.getNumberOfCoveredLines();
+
+      lineNodes.add(lineNode);
+    }
+    
+    MethodNode node = 
+        new MethodNode(method,numberOfValidBranches, numberOfCoveredBranches, numberOfValidLines, numberOfCoveredLines);
+    
+    for(LineNode lineNode:lineNodes){
+      node.addNode(lineNode);
+    }
+
+    return node;
+  }
+
+  public ReportNew getReport(
     List<ProjectData> projects,
     String sourceEncoding, FileFinder finder) {
     this.encoding = sourceEncoding;
@@ -124,12 +218,10 @@ public class JavaReportBuilderStrategyNew implements IReportBuilderStrategy {
     for (ProjectData project : projects) {
       nodes.add(buildProjectNode(project));
     }
-
-    return null;//TODO
-//    return new ReportNew(nodes);
+    return new ReportNew(nodes);
   }
 
-  @Override
+
   public JVMLanguage getTargetedLanguage() {
     return JVMLanguage.JAVA;
   }

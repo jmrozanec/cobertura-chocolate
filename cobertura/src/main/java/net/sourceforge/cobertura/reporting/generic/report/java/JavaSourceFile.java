@@ -1,14 +1,12 @@
 package net.sourceforge.cobertura.reporting.generic.report.java;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
-import java.util.SortedSet;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -46,5 +44,9 @@ public class JavaSourceFile {
     JavaSourceFileLine line = sourceFileLines.get(lineNumber);
     lock.writeLock().unlock();
     return line;
+  }
+
+  public Iterable<JavaSourceFileLine> getSourceFileLines(Predicate<JavaSourceFileLine> predicate){
+    return Iterables.filter(sourceFileLines, predicate);
   }
 }

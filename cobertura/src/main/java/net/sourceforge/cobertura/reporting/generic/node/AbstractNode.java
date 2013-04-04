@@ -26,6 +26,8 @@ public abstract class AbstractNode implements NewNode{
   protected final int coveredBranches;
   protected final int totalLines;
   protected final int coveredLines;
+  protected double cyclomaticComplexity;
+  protected int hits;
 
   public AbstractNode(String name, int totalBranches, int coveredBranches, int totalLines, int coveredLines) {
     this.totalBranches = totalBranches;
@@ -99,6 +101,16 @@ public abstract class AbstractNode implements NewNode{
   @Override
   public double getLinesRate() {
     return (double)getCoveredLines()/(double)getTotalLines();
+  }
+
+  @Override
+  public double getCNNComplexity(){
+    return cyclomaticComplexity;
+  }
+
+  @Override
+  public int getHits(){
+    return hits;
   }
 
   @Override
