@@ -31,6 +31,14 @@ public abstract class AbstractNode implements NewNode{
   protected double cyclomaticComplexity;
   protected int hits;
 
+  @Override
+  public void addNode(NewNode node) {
+    notNull(node);
+    if(acceptNode(node)){
+      childs.add(node);
+    }
+  }
+
   public AbstractNode(String name, int totalBranches, int coveredBranches, int totalLines, int coveredLines) {
     this.totalBranches = totalBranches;
     this.coveredBranches = coveredBranches;
@@ -41,14 +49,6 @@ public abstract class AbstractNode implements NewNode{
     thresholds = new TreeSet<Threshold>();
     notNull(name);
     this.name = name;
-  }
-
-  @Override
-  public void addNode(NewNode node) {
-    notNull(node);
-    if(acceptNode(node)){
-      childs.add(node);
-    }
   }
 
   protected abstract boolean acceptNode(NewNode node);
