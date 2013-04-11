@@ -60,10 +60,8 @@ New metrics can be defined implementing ICustomMetric interface.
 
 * review parameters Cobertura accepts. See how to deal with classes inclusion/exclusion when receiving Ant like patterns (ex.: "**/A.class")
 * allow to assign a name to a project (currently a hash is calculated, based on project files)
-* create a Maven plugin
-* make Jenkins plugin leverage this code
-* see how to handle war/jar/ear files instrumentation
-* create IReportBuilderStrategies for other JVM languages
+* handle war/jar/ear files instrumentation
+* create IReportBuilderStrategy implementations for other JVM languages
 
 
 Contributions are welcome! You should be able to start working on this after cloning the repo and importing the Maven project to your IDE.
