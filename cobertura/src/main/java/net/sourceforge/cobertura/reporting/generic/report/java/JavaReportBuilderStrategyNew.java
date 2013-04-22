@@ -11,6 +11,7 @@ import net.sourceforge.cobertura.reporting.generic.SourceFile;
 import net.sourceforge.cobertura.reporting.generic.node.NewNode;
 import net.sourceforge.cobertura.reporting.generic.node.java.*;
 import net.sourceforge.cobertura.reporting.generic.report.JVMLanguage;
+import net.sourceforge.cobertura.reporting.generic.report.ReportBuilderStrategyNew;
 import net.sourceforge.cobertura.reporting.generic.report.ReportNew;
 import net.sourceforge.cobertura.util.FileFinder;
 import org.apache.log4j.Logger;
@@ -43,13 +44,10 @@ import java.util.*;
  * Handles ProjectData information and puts it into a Report object.
  * Assumes ProjectData information corresponds to a Java project.
  */
-public class JavaReportBuilderStrategyNew {
-//implements IReportBuilderStrategy //TODO commented to avoid issues while loading by reflection
-  private static final Logger log = Logger.getLogger(JavaReportBuilderStrategy.class);
-  private Set<SourceFile> sourceFiles;
-
+public class JavaReportBuilderStrategyNew implements ReportBuilderStrategyNew {
   private String encoding;
   private FileFinder fileFinder;
+  private ComplexityCalculator complexity;
 
   private ProjectNode buildProjectNode(ProjectData projectData){
     ProjectNode node = new ProjectNode(
@@ -57,7 +55,9 @@ public class JavaReportBuilderStrategyNew {
       projectData.getNumberOfValidBranches(),
       projectData.getNumberOfCoveredBranches(),
       projectData.getNumberOfValidLines(),
-      projectData.getNumberOfCoveredLines()
+      projectData.getNumberOfCoveredLines(),
+      projectData.getHits(),
+      complexity.getCCNForProject(projectData)
     );
 
     for(Object o: projectData.getPackages()){
@@ -73,10 +73,12 @@ public class JavaReportBuilderStrategyNew {
       packageData.getNumberOfValidBranches(),
       packageData.getNumberOfCoveredBranches(),
       packageData.getNumberOfValidLines(),
-      packageData.getNumberOfCoveredLines());
+      packageData.getNumberOfCoveredLines(),
+      packageData.getHits(),
+      complexity.getCCNForPackage(packageData));
 
     for(Object o: packageData.getSourceFiles()){
-      node.addNode(buildSourceFileNode((SourceFileData)o));
+      node.addNode(buildSourceFileNode((SourceFileData) o));
     }
 
     return node;
@@ -88,7 +90,9 @@ public class JavaReportBuilderStrategyNew {
       sourceFileData.getNumberOfValidBranches(),
       sourceFileData.getNumberOfCoveredBranches(),
       sourceFileData.getNumberOfValidLines(),
-      sourceFileData.getNumberOfCoveredLines()
+      sourceFileData.getNumberOfCoveredLines(),
+      sourceFileData.getHits(),
+      complexity.getCCNForSourceFile(sourceFileData)
     );
 
     try {
@@ -101,7 +105,7 @@ public class JavaReportBuilderStrategyNew {
         }
       };
       for (JavaSourceFileLine line : sourceFile.getSourceFileLines(linesDoNotBelongToAnyClass)) {
-        LineNode lineNode = new LineNode("" + line.getLineNumber(), 0, 0, 1, 0);
+        LineNode lineNode = new LineNode("" + line.getLineNumber(), 0, 0, 1, 0, 0, 0);//TODO check complexity and hits!
         lineNode.setLineString(line.getText());
         node.addNode(lineNode);
       }
@@ -123,7 +127,9 @@ public class JavaReportBuilderStrategyNew {
         classData.getNumberOfValidBranches(),
         classData.getNumberOfCoveredBranches(),
         classData.getNumberOfValidLines(),
-        classData.getNumberOfCoveredLines()
+        classData.getNumberOfCoveredLines(),
+        classData.getHits(),
+        complexity.getCCNForClass(classData)
     );
 
     Predicate<JavaSourceFileLine>sameClass = new Predicate<JavaSourceFileLine>() {
@@ -140,7 +146,7 @@ public class JavaReportBuilderStrategyNew {
     };
     for (JavaSourceFileLine line :
         sourceFile.getSourceFileLines(Predicates.<JavaSourceFileLine>and(sameClass, doesNotBelongToMethod))) {
-      node.addNode(new LineNode("" + line.getLineNumber(), 0, 0, 1, 0));
+      node.addNode(new LineNode("" + line.getLineNumber(), 0, 0, 1, 0, 0, 0)); //TODO check complexity and hits!
     }
 
     for(final String method:classData.getMethodNamesAndDescriptors()){
@@ -186,8 +192,10 @@ public class JavaReportBuilderStrategyNew {
           lineData.getNumberOfValidBranches(),
           lineData.getNumberOfCoveredBranches(), 
           lineData.getNumberOfValidLines(),
-          lineData.getNumberOfCoveredLines());
-      lineNode.setLineString(line.getText());
+          lineData.getNumberOfCoveredLines(),
+          lineData.getHits(),
+          0);//TODO we have no complexity value for method
+          lineNode.setLineString(line.getText());
       
       numberOfValidBranches+=lineData.getNumberOfValidBranches();
       numberOfCoveredBranches+=lineData.getNumberOfCoveredBranches();
@@ -198,7 +206,8 @@ public class JavaReportBuilderStrategyNew {
     }
     
     MethodNode node = 
-        new MethodNode(method,numberOfValidBranches, numberOfCoveredBranches, numberOfValidLines, numberOfCoveredLines);
+        new MethodNode(method,numberOfValidBranches, numberOfCoveredBranches,
+          numberOfValidLines, numberOfCoveredLines, 0, 0);//TODO check hits and complexity values
     
     for(LineNode lineNode:lineNodes){
       node.addNode(lineNode);
@@ -212,7 +221,7 @@ public class JavaReportBuilderStrategyNew {
     String sourceEncoding, FileFinder finder) {
     this.encoding = sourceEncoding;
     this.fileFinder = finder;
-    ComplexityCalculator complexity = new ComplexityCalculator(fileFinder);
+    complexity = new ComplexityCalculator(fileFinder);
 
     Set<NewNode>nodes = Sets.newHashSet();
     for (ProjectData project : projects) {

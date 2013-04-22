@@ -14,6 +14,7 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import static org.apache.commons.lang.Validate.isTrue;
 import static org.apache.commons.lang.Validate.notNull;
 
 public abstract class AbstractNode implements NewNode{
@@ -27,9 +28,8 @@ public abstract class AbstractNode implements NewNode{
   protected final int totalLines;
   protected final int coveredLines;
 
-  //TODO we should set these values
-  protected double cyclomaticComplexity;
-  protected int hits;
+  protected final double cyclomaticComplexity;
+  protected final long hits;
 
   @Override
   public void addNode(NewNode node) {
@@ -39,7 +39,16 @@ public abstract class AbstractNode implements NewNode{
     }
   }
 
-  public AbstractNode(String name, int totalBranches, int coveredBranches, int totalLines, int coveredLines) {
+  public AbstractNode(String name, int totalBranches, int coveredBranches, int totalLines, int coveredLines,
+                      long hits, double ccn) {
+    notNull(name, "Name cannot be null");
+    isTrue(totalBranches>=0, "Total branches should be a positive number");
+    isTrue(coveredBranches>=0, "Covered branches should be a positive number");
+    isTrue(totalLines>=0, "Total lines should be a positive number");
+    isTrue(coveredLines>=0, "Covered lines should be a positive number");
+    isTrue(hits>=0, "Hits should be a positive number");
+    isTrue(ccn>=0, "Total branches should be a positive number");
+
     this.totalBranches = totalBranches;
     this.coveredBranches = coveredBranches;
     this.totalLines = totalLines;
@@ -47,10 +56,16 @@ public abstract class AbstractNode implements NewNode{
     childs = Sets.newHashSet();
     metrics = new TreeSet<IMetric>();
     thresholds = new TreeSet<Threshold>();
-    notNull(name);
     this.name = name;
+    this.hits = hits;
+    this.cyclomaticComplexity = ccn;
   }
 
+  /**
+   * Contains criteria to accept a Node instance.
+   * @param node - some Node instance; must not be <code>null</code>
+   * @return boolean - true if accepts Node, false otherwise;
+   */
   protected abstract boolean acceptNode(NewNode node);
 
   @Override
@@ -106,12 +121,12 @@ public abstract class AbstractNode implements NewNode{
   }
 
   @Override
-  public double getCNNComplexity(){
+  public double getCyclomaticComplexityNumber(){
     return cyclomaticComplexity;
   }
 
   @Override
-  public int getHits(){
+  public long getHits(){
     return hits;
   }
 

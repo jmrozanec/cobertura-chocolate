@@ -5,8 +5,9 @@ import net.sourceforge.cobertura.reporting.generic.node.NewNode;
 
 public class SourceFileNode extends AbstractNode {
 
-  public SourceFileNode(String name, int totalBranches, int coveredBranches, int totalLines, int coveredLines) {
-    super(name, totalBranches, coveredBranches, totalLines, coveredLines);
+  public SourceFileNode(String name, int totalBranches, int coveredBranches, int totalLines, int coveredLines,
+                        long hits, double cyclomaticComplexityNumber) {
+    super(name, totalBranches, coveredBranches, totalLines, coveredLines, hits, cyclomaticComplexityNumber);
   }
 
   @Override

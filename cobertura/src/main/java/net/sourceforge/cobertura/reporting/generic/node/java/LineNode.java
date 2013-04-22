@@ -7,8 +7,9 @@ public class LineNode extends AbstractNode {
 
   private String line;
 
-  public LineNode(String name, int totalBranches, int coveredBranches, int totalLines, int coveredLines) {
-    super(name, totalBranches, coveredBranches, totalLines, coveredLines);
+  public LineNode(String name, int totalBranches, int coveredBranches, int totalLines, int coveredLines,
+                  long hits, double cyclomaticComplexityNumber) {
+    super(name, totalBranches, coveredBranches, totalLines, coveredLines, hits, cyclomaticComplexityNumber);
   }
 
   @Override

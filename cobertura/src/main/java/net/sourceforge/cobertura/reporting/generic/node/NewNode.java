@@ -88,12 +88,12 @@ public interface NewNode {
   /**
    * @return double - cyclomatic complexity for given node;
    */
-  double getCNNComplexity();
+  double getCyclomaticComplexityNumber();
 
   /**
-   * @return int - number of hits to given node;
+   * @return long - number of hits to given node;
    */
-  int getHits();
+  long getHits();
 
   /**
    * Recursively creates IMetric instance for Node instances;

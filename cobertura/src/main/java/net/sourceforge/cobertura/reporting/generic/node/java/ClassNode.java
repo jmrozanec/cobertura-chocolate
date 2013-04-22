@@ -4,8 +4,9 @@ import net.sourceforge.cobertura.reporting.generic.node.AbstractNode;
 import net.sourceforge.cobertura.reporting.generic.node.NewNode;
 
 public class ClassNode extends AbstractNode {
-  public ClassNode(String name, int totalBranches, int coveredBranches, int totalLines, int coveredLines) {
-    super(name, totalBranches, coveredBranches, totalLines, coveredLines);
+  public ClassNode(String name, int totalBranches, int coveredBranches, int totalLines, int coveredLines,
+                   long hits, double cyclomaticComplexityNumber) {
+    super(name, totalBranches, coveredBranches, totalLines, coveredLines, hits, cyclomaticComplexityNumber);
   }
 
   @Override
