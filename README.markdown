@@ -1,4 +1,3 @@
-~toc~
 [![Build Status](https://travis-ci.org/jmrozanec/cobertura-chocolate.png)](https://travis-ci.org/jmrozanec/cobertura-chocolate)
 
 # Cobertura
